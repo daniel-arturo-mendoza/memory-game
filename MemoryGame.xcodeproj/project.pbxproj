@@ -16,6 +16,9 @@
 		B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B07FFF191CC3F78000DEE757 /* LaunchScreen.storyboard */; };
 		B07FFF261CC3F78000DEE757 /* MemoryGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF251CC3F78000DEE757 /* MemoryGameTests.swift */; };
 		B07FFF311CC3F78000DEE757 /* MemoryGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF301CC3F78000DEE757 /* MemoryGameUITests.swift */; };
+		B096CC181D0DDB02007E8C5B /* CardTextures.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B096CC171D0DDB02007E8C5B /* CardTextures.atlas */; };
+		B096CC1A1D0DDBF9007E8C5B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC191D0DDBF9007E8C5B /* Card.swift */; };
+		B096CC1B1D0DDBFA007E8C5B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC191D0DDBF9007E8C5B /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,8 @@
 		B07FFF2C1CC3F78000DEE757 /* MemoryGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoryGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07FFF301CC3F78000DEE757 /* MemoryGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameUITests.swift; sourceTree = "<group>"; };
 		B07FFF321CC3F78000DEE757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B096CC171D0DDB02007E8C5B /* CardTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTextures.atlas; sourceTree = "<group>"; };
+		B096CC191D0DDBF9007E8C5B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,7 @@
 		B07FFF0B1CC3F78000DEE757 /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				B096CC171D0DDB02007E8C5B /* CardTextures.atlas */,
 				B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */,
 				B07FFF0E1CC3F78000DEE757 /* GameScene.sks */,
 				B07FFF101CC3F78000DEE757 /* GameScene.swift */,
@@ -109,6 +115,7 @@
 				B07FFF171CC3F78000DEE757 /* Assets.xcassets */,
 				B07FFF191CC3F78000DEE757 /* LaunchScreen.storyboard */,
 				B07FFF1C1CC3F78000DEE757 /* Info.plist */,
+				B096CC191D0DDBF9007E8C5B /* Card.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 			files = (
 				B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */,
 				B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */,
+				B096CC181D0DDB02007E8C5B /* CardTextures.atlas in Resources */,
 				B07FFF181CC3F78000DEE757 /* Assets.xcassets in Resources */,
 				B07FFF161CC3F78000DEE757 /* Main.storyboard in Resources */,
 			);
@@ -269,6 +277,7 @@
 				B07FFF111CC3F78000DEE757 /* GameScene.swift in Sources */,
 				B07FFF131CC3F78000DEE757 /* GameViewController.swift in Sources */,
 				B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */,
+				B096CC1A1D0DDBF9007E8C5B /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07FFF261CC3F78000DEE757 /* MemoryGameTests.swift in Sources */,
+				B096CC1B1D0DDBFA007E8C5B /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +505,7 @@
 				B07FFF371CC3F78000DEE757 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B07FFF381CC3F78000DEE757 /* Build configuration list for PBXNativeTarget "MemoryGameTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +514,7 @@
 				B07FFF3A1CC3F78000DEE757 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B07FFF3B1CC3F78000DEE757 /* Build configuration list for PBXNativeTarget "MemoryGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +523,7 @@
 				B07FFF3D1CC3F78000DEE757 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
