@@ -79,7 +79,7 @@ class Card: SKSpriteNode {
             //}
             self.faceUp = false
             
-            print("flipping - Face DOWN")
+            print("\(id) flipping - Face DOWN - Pos: \(self.position)")
             
         } else {
             self.texture = self.frontTexture
@@ -88,9 +88,14 @@ class Card: SKSpriteNode {
             //}
             self.faceUp = true
             
-            print("flipping - Face UP")
+            print("\(id) flipping - Face UP - Pos: \(self.position)")
             
         }
+    }
+    
+    func isFaceUp() -> Bool{
+        return self.faceUp
+        
     }
     
     override func isEqual(object: AnyObject?) -> Bool {
