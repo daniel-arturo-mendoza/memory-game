@@ -16,7 +16,7 @@ class GameScene: SKScene {
     let x:CGFloat = 100
     let y:CGFloat = 450
     
-    var deck : [Card] = CardManager.cardManagerSingleton.getDeck()
+    var deck : [Card] = CardManager.cardManagerSingleton.getShuffledDeck()
     
     override init(size: CGSize) {
         super.init(size: size)
