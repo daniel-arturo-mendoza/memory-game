@@ -1,5 +1,5 @@
 //
-//  CardManager.swift
+//  CardGameEngine.swift
 //  MemoryGame
 //
 //  Created by Daniel Mendoza on 13/06/2016.
@@ -9,9 +9,9 @@
 import Foundation
 import CoreGraphics
 
-class CardManager {
+class CardGameEngine {
     
-    static let cardManagerSingleton = CardManager()
+    static let INSTANCE = CardGameEngine()
     
     private var deck : [Card] = []
     private var card :  Card?
@@ -56,5 +56,32 @@ class CardManager {
             swapPositions(randIndex, index2:Int(i))
             i += 1
         }
+    }
+    
+    var card1:Card?
+    var card2:Card?
+    
+    func canFlip(_card:Card) -> Bool {
+        var res:Bool?
+        
+        synced(self) {
+            if(self.card1 == nil){
+                self.card1 = _card
+                res = true
+            } else if(self.card2 == nil){
+                self.card2 = _card
+                res = true
+            } else {
+                res = false
+            }
+        }
+        
+        return res!
+    }
+    
+    private func synced(lock: CardGameEngine, closure: () -> ()) {
+        objc_sync_enter(lock)
+        closure()
+        objc_sync_exit(lock)
     }
 }

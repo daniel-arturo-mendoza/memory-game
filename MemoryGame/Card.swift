@@ -33,7 +33,7 @@ class Card: SKSpriteNode {
         for _ in touches {
             
             //if touch.tapCount > 1 {
-            flip()
+            reveal()
             //}
             
             // note: removed references to touchedNode
@@ -71,31 +71,43 @@ class Card: SKSpriteNode {
         }
     }
     
-    func flip() {
-        if faceUp {
-            self.texture = self.backTexture
-            //if let damageLabel = self.childNodeWithName("damageLabel") {
-            //    damageLabel.hidden = true
-            //}
-            self.faceUp = false
-            
-            print("\(id) flipping - Face DOWN - Pos: \(self.position)")
-            
+    
+    func reveal() -> Bool {
+        if(!faceUp){
+            return doFlip()
         } else {
-            self.texture = self.frontTexture
-            //if let damageLabel = self.childNodeWithName("damageLabel") {
-            //    damageLabel.hidden = false
-            //}
-            self.faceUp = true
-            
-            print("\(id) flipping - Face UP - Pos: \(self.position)")
-            
+            print("\(id) card already revealed!!")
+            return false
         }
     }
     
-    func isFaceUp() -> Bool{
-        return self.faceUp
+    func doFlip() -> Bool {
+        if(CardGameEngine.INSTANCE.canFlip(self)){
+            flip()
+            return true
+        }
+        return false
+    }
+    
+    
+    func flip() {
         
+        if faceUp {
+            self.texture = self.backTexture
+            self.faceUp = false
+            print("\(id) flipping - Face DOWN - Pos: \(self.position)")
+        
+        } else {
+            self.texture = self.frontTexture
+            self.faceUp = true
+            print("\(id) flipping - Face UP - Pos: \(self.position)")
+        }
+    
+    }
+    
+    func isFaceUp() -> Bool{
+    
+        return self.faceUp
     }
     
     override func isEqual(object: AnyObject?) -> Bool {

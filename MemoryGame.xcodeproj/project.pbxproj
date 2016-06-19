@@ -21,8 +21,8 @@
 		B096CC1B1D0DDBFA007E8C5B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC191D0DDBF9007E8C5B /* Card.swift */; };
 		B096CC1D1D0DE68A007E8C5B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1C1D0DE68A007E8C5B /* Device.swift */; };
 		B096CC1E1D0DE68A007E8C5B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1C1D0DE68A007E8C5B /* Device.swift */; };
-		B096CC201D0EEE27007E8C5B /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardManager.swift */; };
-		B096CC211D0EEE27007E8C5B /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardManager.swift */; };
+		B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
+		B096CC211D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		B096CC171D0DDB02007E8C5B /* CardTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTextures.atlas; sourceTree = "<group>"; };
 		B096CC191D0DDBF9007E8C5B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B096CC1C1D0DE68A007E8C5B /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		B096CC1F1D0EEE27007E8C5B /* CardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGameEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				B07FFF1C1CC3F78000DEE757 /* Info.plist */,
 				B096CC191D0DDBF9007E8C5B /* Card.swift */,
 				B096CC1C1D0DE68A007E8C5B /* Device.swift */,
-				B096CC1F1D0EEE27007E8C5B /* CardManager.swift */,
+				B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				B07FFF131CC3F78000DEE757 /* GameViewController.swift in Sources */,
 				B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */,
 				B096CC1A1D0DDBF9007E8C5B /* Card.swift in Sources */,
-				B096CC201D0EEE27007E8C5B /* CardManager.swift in Sources */,
+				B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B096CC1E1D0DE68A007E8C5B /* Device.swift in Sources */,
-				B096CC211D0EEE27007E8C5B /* CardManager.swift in Sources */,
+				B096CC211D0EEE27007E8C5B /* CardGameEngine.swift in Sources */,
 				B07FFF261CC3F78000DEE757 /* MemoryGameTests.swift in Sources */,
 				B096CC1B1D0DDBFA007E8C5B /* Card.swift in Sources */,
 			);
