@@ -16,7 +16,7 @@ class GameScene: SKScene {
     let x:CGFloat = 100
     let y:CGFloat = 450
     
-    var deck : [Card] = CardGameEngine.INSTANCE.getShuffledDeck()
+    var deck : [Card] = CardGameEngine.INSTANCE.getShuffledDeckForGame()
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -62,7 +62,7 @@ class GameScene: SKScene {
         backgroundColor = (UIColor.blackColor())
         
         for _card in deck {
-            _card.flip()//this is a workaround. need to think in a better impleemtation
+            _card.flip()//this is a workaround. need to think in a better implemtation
             addChild(_card)
         }
     }

@@ -21,19 +21,21 @@ class Card: SKSpriteNode {
     }
     
     init(imageNamedFront: String, imageNamedBack: String) {
-        id = imageNamedFront;
+        id = imageNamedFront
         frontTexture = SKTexture(imageNamed: imageNamedFront)
         backTexture = SKTexture(imageNamed: imageNamedBack)
         
         super.init(texture: frontTexture, color: UIColor.clearColor(), size: frontTexture.size())
         userInteractionEnabled = true
+        name = imageNamedFront
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for _ in touches {
             
             //if touch.tapCount > 1 {
-            reveal()
+            //reveal()
             //}
             
             // note: removed references to touchedNode
@@ -55,11 +57,11 @@ class Card: SKSpriteNode {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
+        /*for touch in touches {
             let location = touch.locationInNode(scene!) // make sure this is scene, not self
             let touchedNode = nodeAtPoint(location)
             touchedNode.position = location
-        }
+        }*/
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -68,6 +70,8 @@ class Card: SKSpriteNode {
             let dropDown = SKAction.scaleTo(1.0, duration: 0.2)
             runAction(dropDown, withKey: "drop")
             removeActionForKey("wiggle")
+            
+            reveal()
         }
     }
     
@@ -81,8 +85,10 @@ class Card: SKSpriteNode {
         }
     }
     
+    var revCard = 0
     func doFlip() -> Bool {
-        if(CardGameEngine.INSTANCE.canFlip(self)){
+        revCard = CardGameEngine.INSTANCE.canFlip(self)
+        if(revCard > 0){
             flip()
             return true
         }
@@ -102,6 +108,8 @@ class Card: SKSpriteNode {
             self.faceUp = true
             print("\(id) flipping - Face UP - Pos: \(self.position)")
         }
+        
+        
     
     }
     
