@@ -28,6 +28,10 @@ class CardGameEngine {
         initDeck()
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     /* Sets game difficulty */
     func configureGame(difficulty: DifficultyEnum) {
         
@@ -93,9 +97,13 @@ class CardGameEngine {
             
             // Place the drawn card into a new deck
             _deck.append(self.deckAllCards[i])
+            NSNotificationCenter.defaultCenter().addObserver(
+                self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: self.deckAllCards[i])
             
             // Create a copy of the drawn card
             _card = Card(imageNamedFront: "\(self.deckAllCards[i].id)", imageNamedBack: "c0.png")
+            NSNotificationCenter.defaultCenter().addObserver(
+                self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: _card)
             
             // Place the copied card into the new deck
             _deck.append(_card!)
@@ -133,12 +141,56 @@ class CardGameEngine {
                 res = 2
             }
         }
-        
         return res
     }
     
-    func hideCards() {
+    private func hideRevealedCards() {
+        if(card1 != nil && card2 != nil) { //deffensive programming
+            card1?.flip()
+            card2?.flip()
+            resetRevealedCards()
+        }
+    }
+    
+    private func resetRevealedCards() {
+        card1 = nil
+        card2 = nil
+    }
+    
+    private func areRevealedCardsEqual() -> Bool{
+        if(card1 == nil) {
+            return false
+        } else if(card2 == nil) {
+            return false
+        } else {
+            return (card1?.isEqual(card2))!
+        }
+    }
+    
+    @objc func actOnReveal(notification: NSNotification) {
+        print("NOTIFICATION: Card revealed")
+        if(areRevealedCardsEqual()){
+            print("CARDS ARE EQUAL!!!")
+            resetRevealedCards()
+        } else if(card1 != nil && card2 != nil){
+            print("CARDS ARE DIFFERENT")
+            
+            delay(2.0) {
+                self.hideRevealedCards()
+            }
+        }
+    }
+    
+    func delay(delay: Double, closure: ()->()) {
         
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(),
+            closure
+        )
     }
     
     /* Synchronizes a block of code */

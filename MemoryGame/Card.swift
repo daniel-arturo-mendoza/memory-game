@@ -72,13 +72,18 @@ class Card: SKSpriteNode {
             removeActionForKey("wiggle")
             
             reveal()
+            postNotificationName(Constants.CARD_REVEAL_NOTIFY)
         }
     }
     
     
     func reveal() -> Bool {
         if(!faceUp){
-            return doFlip()
+            if(doFlip()) {
+                return true
+            } else {
+                return false
+            }
         } else {
             print("\(id) card already revealed!!")
             return false
@@ -95,27 +100,28 @@ class Card: SKSpriteNode {
         return false
     }
     
-    
     func flip() {
         
         if faceUp {
             self.texture = self.backTexture
             self.faceUp = false
-            print("\(id) flipping - Face DOWN - Pos: \(self.position)")
+            //print("\(id) flipping - Face DOWN - Pos: \(self.position)")
         
         } else {
             self.texture = self.frontTexture
             self.faceUp = true
-            print("\(id) flipping - Face UP - Pos: \(self.position)")
+            //print("\(id) flipping - Face UP - Pos: \(self.position)")
         }
-        
-        
-    
     }
     
     func isFaceUp() -> Bool{
     
         return self.faceUp
+    }
+    
+    func postNotificationName (notificationName:String) {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     
     override func isEqual(object: AnyObject?) -> Bool {
