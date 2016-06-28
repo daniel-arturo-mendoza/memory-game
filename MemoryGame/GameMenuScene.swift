@@ -12,6 +12,9 @@ import SpriteKit
 class GameMenuScene: SKScene {
     
     let modelName = UIDevice.currentDevice().modelName
+    var easyBtn:DifficultyButton?
+    var medBtn:DifficultyButton?
+    var hardBtn:DifficultyButton?
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -26,18 +29,18 @@ class GameMenuScene: SKScene {
         backgroundColor = (UIColor.blackColor())
         
         addButtons()
-        startGame()
+        addListeners()
     }
     
     private func addButtons() {
-        let easyBtn = DifficultyButton(image: "easy.png", difficulty: DifficultyEnum.EASY)
-        easyBtn.position = CGPointMake(self.size.width/2 , self.size.height/2)
+        easyBtn = DifficultyButton(image: "easy.png", setDifficultyAction: Constants.START_GAME_EASY)
+        easyBtn!.position = CGPointMake(self.size.width/2 , self.size.height/2)
         
-        let medBtn = DifficultyButton(image: "medium.png", difficulty: DifficultyEnum.MEDIUM)
-        medBtn.position = CGPointMake(self.size.width/2 , (self.size.height/2)-60)
+        medBtn = DifficultyButton(image: "medium.png", setDifficultyAction: Constants.START_GAME_MEDIUM)
+        medBtn!.position = CGPointMake(self.size.width/2 , (self.size.height/2)-60)
         
-        let hardBtn = DifficultyButton(image: "hard.png", difficulty: DifficultyEnum.HARD)
-        hardBtn.position = CGPointMake(self.size.width/2 , (self.size.height/2)-120)
+        hardBtn = DifficultyButton(image: "hard.png", setDifficultyAction: Constants.START_GAME_HARD)
+        hardBtn!.position = CGPointMake(self.size.width/2 , (self.size.height/2)-120)
         
         /*if(modelName == "iPhone 5s" || modelName == "Simulator") {
             
@@ -50,10 +53,9 @@ class GameMenuScene: SKScene {
             
         }*/
         
-        
-        addChild(easyBtn)
-        addChild(medBtn)
-        addChild(hardBtn)
+        addChild(easyBtn!)
+        addChild(medBtn!)
+        addChild(hardBtn!)
     }
     
     private func startGame() {
@@ -63,4 +65,26 @@ class GameMenuScene: SKScene {
         
     }
     
+    private func addListeners() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(GameMenuScene.actOnButton(_:)), name: Constants.START_GAME_EASY, object: easyBtn)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(GameMenuScene.actOnButton(_:)), name: Constants.START_GAME_MEDIUM, object: medBtn)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(GameMenuScene.actOnButton(_:)), name: Constants.START_GAME_HARD, object: hardBtn)
+    }
+    
+    @objc func actOnButton(notification: NSNotification) {
+        print("NOTIFICATION: Difficulty Button pressed")
+        if(notification.name == Constants.START_GAME_EASY){
+            startGame()
+        } else if (notification.name == Constants.START_GAME_MEDIUM){
+            startGame()
+        } else {
+            startGame()
+        }
+    }
+
 }

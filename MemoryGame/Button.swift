@@ -13,6 +13,7 @@ class Button: SKSpriteNode {
     
     var id = "";
     var buttonTexture: SKTexture!
+    var action:String?
     
     required init(coder aDecoder: NSCoder){
         fatalError("NSCoding not Supported")
@@ -70,11 +71,18 @@ class Button: SKSpriteNode {
             runAction(dropDown, withKey: "drop")
             removeActionForKey("wiggle")
         }
+        if(action != nil) {
+            postNotificationName(action!)
+        }
     }
     
     func postNotificationName (notificationName:String) {
         
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
+    }
+    
+    func setActionName (action: String) {
+        self.action = action
     }
     
     override func isEqual(object: AnyObject?) -> Bool {

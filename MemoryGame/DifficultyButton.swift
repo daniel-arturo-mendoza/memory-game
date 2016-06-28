@@ -11,15 +11,13 @@ import SpriteKit
 
 class DifficultyButton: Button {
     
-    var difficulty:DifficultyEnum?
-    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(image: String, difficulty: DifficultyEnum) {
+    init(image: String, setDifficultyAction: String) {
         super.init(image: image)
-        self.difficulty = difficulty
+        self.action = setDifficultyAction
     }
     
 
