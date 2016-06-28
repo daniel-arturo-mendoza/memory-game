@@ -21,7 +21,7 @@ class CardGameEngine {
     private var card1 : Card?
     private var card2 : Card?
     
-    private var difficulty: DifficultyEnum = DifficultyEnum.Easy
+    private var difficulty: DifficultyEnum = DifficultyEnum.EASY
     
     init() {
         
@@ -81,9 +81,9 @@ class CardGameEngine {
         var numOfPairs:Int
         
         // Define the number of cards tuples according the difficulty.
-        if (self.difficulty == DifficultyEnum.Easy) {
+        if (self.difficulty == DifficultyEnum.EASY) {
             numOfPairs = 3
-        } else if (self.difficulty == DifficultyEnum.Medium) {
+        } else if (self.difficulty == DifficultyEnum.MEDIUM) {
             numOfPairs = 5
         } else {
             numOfPairs = 7

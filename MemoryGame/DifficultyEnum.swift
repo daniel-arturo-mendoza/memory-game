@@ -9,7 +9,7 @@
 import Foundation
 
 enum DifficultyEnum {
-    case Easy
-    case Medium
-    case Hard
+    case EASY
+    case MEDIUM
+    case HARD
 }

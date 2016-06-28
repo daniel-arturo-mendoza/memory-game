@@ -11,5 +11,9 @@ import Foundation
 class Constants {
     
     static let CARD_REVEAL_NOTIFY:String = "card.event.reveal"
+    static let START_GAME_EASY:String = "game.event.easy"
+    static let START_GAME_MEDIUM:String = "game.event.medium"
+    static let START_GAME_HARD:String = "game.event.hard"
+    
     
 }
