@@ -58,9 +58,10 @@ class GameMenuScene: SKScene {
         addChild(hardBtn!)
     }
     
-    private func startGame() {
+    private func startGame(difficulty: DifficultyEnum) {
+        CardGameEngine.INSTANCE.configureGame(difficulty)
         let gameScene = GameScene(size: view!.bounds.size)
-        let transition = SKTransition.fadeWithDuration(10)
+        let transition = SKTransition.fadeWithDuration(2)
         view!.presentScene(gameScene, transition: transition)
         
     }
@@ -79,11 +80,11 @@ class GameMenuScene: SKScene {
     @objc func actOnButton(notification: NSNotification) {
         print("NOTIFICATION: Difficulty Button pressed")
         if(notification.name == Constants.START_GAME_EASY){
-            startGame()
+            startGame(DifficultyEnum.EASY)
         } else if (notification.name == Constants.START_GAME_MEDIUM){
-            startGame()
+            startGame(DifficultyEnum.MEDIUM)
         } else {
-            startGame()
+            startGame(DifficultyEnum.HARD)
         }
     }
 

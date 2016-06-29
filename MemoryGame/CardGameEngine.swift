@@ -13,7 +13,9 @@ class CardGameEngine {
     
     static let INSTANCE = CardGameEngine()
     
-    var numOfCards = 6
+    var numOfCards = 30
+    var cardSize = ""
+    var difficulty: DifficultyEnum = DifficultyEnum.EASY
     
     private var deckAllCards : [Card] = []
     private var card :  Card?
@@ -21,11 +23,9 @@ class CardGameEngine {
     private var card1 : Card?
     private var card2 : Card?
     
-    private var difficulty: DifficultyEnum = DifficultyEnum.EASY
-    
     init() {
         
-        initDeck()
+        //initDeck()
     }
     
     deinit {
@@ -36,13 +36,24 @@ class CardGameEngine {
     func configureGame(difficulty: DifficultyEnum) {
         
         self.difficulty = difficulty
+        initDeck()
     }
     
     /* Initializes the primary deck with ALL available cards in the game */
     private func initDeck() {
+        self.deckAllCards.removeAll()
         
-        for var i in (1...6) {
-            card = Card(imageNamedFront: "c\(i).png", imageNamedBack: "c0.png")
+        if (difficulty == DifficultyEnum.EASY) {
+            cardSize = Constants.BIG_CARDS_5S
+        } else if (difficulty == DifficultyEnum.MEDIUM) {
+            cardSize = Constants.MEDIUM_CARDS_5S
+        } else {
+            cardSize = Constants.SMALL_CARDS_5S
+        }
+        
+        for var i in (1...30) {
+            //var s = "c\(i)_\(cardSize).png"
+            card = Card(imageNamedFront: "c\(i)_\(cardSize)", imageNamedBack: "c0_\(cardSize)")
             self.deckAllCards.append(card!)
             i += 1
         }
@@ -86,7 +97,7 @@ class CardGameEngine {
         } else if (self.difficulty == DifficultyEnum.MEDIUM) {
             numOfPairs = 5
         } else {
-            numOfPairs = 7
+            numOfPairs = 9
         }
         
         // Shuffling the primary deck.
@@ -101,7 +112,7 @@ class CardGameEngine {
                 self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: self.deckAllCards[i])
             
             // Create a copy of the drawn card
-            _card = Card(imageNamedFront: "\(self.deckAllCards[i].id)", imageNamedBack: "c0.png")
+            _card = Card(imageNamedFront: "\(self.deckAllCards[i].id)", imageNamedBack: "c0_\(cardSize)")
             NSNotificationCenter.defaultCenter().addObserver(
                 self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: _card)
             

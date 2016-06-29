@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		B003A1A71D21A3C4000EF285 /* GameMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */; };
 		B003A1A91D21ADC0000EF285 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A81D21ADC0000EF285 /* Button.swift */; };
-		B003A1AC1D21B839000EF285 /* easy.png in Resources */ = {isa = PBXBuildFile; fileRef = B003A1AB1D21B839000EF285 /* easy.png */; };
-		B003A1AF1D21C2E1000EF285 /* hard.png in Resources */ = {isa = PBXBuildFile; fileRef = B003A1AD1D21C2E1000EF285 /* hard.png */; };
-		B003A1B01D21C2E1000EF285 /* medium.png in Resources */ = {isa = PBXBuildFile; fileRef = B003A1AE1D21C2E1000EF285 /* medium.png */; };
 		B040E7C91D22BA4E003A1660 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */; };
 		B04A85D31D18AFDF00147F28 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A85D21D18AFDF00147F28 /* Constants.swift */; };
+		B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532A1D24136700386F2D /* ButtonTextures.atlas */; };
+		B058532D1D241B7500386F2D /* CardTexturesRetina.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */; };
+		B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532E1D2460B100386F2D /* CardTexturesMin.atlas */; };
 		B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */; };
 		B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B07FFF0E1CC3F78000DEE757 /* GameScene.sks */; };
 		B07FFF111CC3F78000DEE757 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF101CC3F78000DEE757 /* GameScene.swift */; };
@@ -53,11 +53,11 @@
 /* Begin PBXFileReference section */
 		B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuScene.swift; sourceTree = "<group>"; };
 		B003A1A81D21ADC0000EF285 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		B003A1AB1D21B839000EF285 /* easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easy.png; sourceTree = "<group>"; };
-		B003A1AD1D21C2E1000EF285 /* hard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hard.png; sourceTree = "<group>"; };
-		B003A1AE1D21C2E1000EF285 /* medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medium.png; sourceTree = "<group>"; };
 		B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		B04A85D21D18AFDF00147F28 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B058532A1D24136700386F2D /* ButtonTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ButtonTextures.atlas; sourceTree = "<group>"; };
+		B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTexturesRetina.atlas; sourceTree = "<group>"; };
+		B058532E1D2460B100386F2D /* CardTexturesMin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTexturesMin.atlas; sourceTree = "<group>"; };
 		B07FFF091CC3F78000DEE757 /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B07FFF0E1CC3F78000DEE757 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -105,16 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B003A1AA1D21B812000EF285 /* ButtonTextures.atlas */ = {
-			isa = PBXGroup;
-			children = (
-				B003A1AD1D21C2E1000EF285 /* hard.png */,
-				B003A1AE1D21C2E1000EF285 /* medium.png */,
-				B003A1AB1D21B839000EF285 /* easy.png */,
-			);
-			name = ButtonTextures.atlas;
-			sourceTree = "<group>";
-		};
 		B07FFF001CC3F78000DEE757 = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +128,9 @@
 		B07FFF0B1CC3F78000DEE757 /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
-				B003A1AA1D21B812000EF285 /* ButtonTextures.atlas */,
+				B058532E1D2460B100386F2D /* CardTexturesMin.atlas */,
+				B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */,
+				B058532A1D24136700386F2D /* ButtonTextures.atlas */,
 				B096CC171D0DDB02007E8C5B /* CardTextures.atlas */,
 				B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */,
 				B07FFF0E1CC3F78000DEE757 /* GameScene.sks */,
@@ -285,14 +277,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B003A1AF1D21C2E1000EF285 /* hard.png in Resources */,
+				B058532D1D241B7500386F2D /* CardTexturesRetina.atlas in Resources */,
 				B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */,
+				B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */,
+				B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */,
 				B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */,
 				B096CC181D0DDB02007E8C5B /* CardTextures.atlas in Resources */,
 				B07FFF181CC3F78000DEE757 /* Assets.xcassets in Resources */,
 				B07FFF161CC3F78000DEE757 /* Main.storyboard in Resources */,
-				B003A1B01D21C2E1000EF285 /* medium.png in Resources */,
-				B003A1AC1D21B839000EF285 /* easy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
