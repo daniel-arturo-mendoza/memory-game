@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var y:CGFloat = 450
     
     var deck : [Card] = CardGameEngine.INSTANCE.getShuffledDeckForGame()
+    var menuButton:Button = Button(image: "button_70x66")
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -49,10 +50,10 @@ class GameScene: SKScene {
             //}
             
             if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.HARD) {
-                x = 60
+                x = 55
                 y = 520
                 
-                xPad = 100
+                xPad = 70
                 yPad = 90
                 
                 var _index = 0
@@ -61,7 +62,7 @@ class GameScene: SKScene {
                 var yCount:CGFloat = 0
                 
                 for card in deck {
-                    if(_index != 3){
+                    if(_index != 4){
                         card.position = CGPointMake(x + (xPad * xCount), _y)
                     } else {
                         _index = 0
@@ -75,6 +76,8 @@ class GameScene: SKScene {
                     _index += 1
                     xCount += 1
                 }
+                
+                menuButton.position = CGPointMake(50,50)
                 
             } else {
             
@@ -99,6 +102,12 @@ class GameScene: SKScene {
             */
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(self.playWrongPairSound(_:)), name: Constants.CARD_PAIR_DIFFERENT, object: CardGameEngine.INSTANCE)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(self.playCorrectPairSound(_:)), name: Constants.CARD_PAIR_EQUAL, object: CardGameEngine.INSTANCE)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,6 +122,32 @@ class GameScene: SKScene {
             _card.flip()//this is a workaround. need to think in a better implemtation
             addChild(_card)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(GameScene.actOnButton(_:)), name: Constants.GAME_MENU, object: menuButton)
+        menuButton.action = Constants.GAME_MENU
+        addChild(menuButton)
     }
 
+    @objc func actOnButton(notification: NSNotification) {
+        print("NOTIFICATION: Menu Button pressed")
+        
+        if(notification.name == Constants.GAME_MENU) {
+            CardGameEngine.INSTANCE.configureGame(DifficultyEnum.EASY)
+            
+            let menuScene = GameMenuScene(size: view!.bounds.size)
+            menuScene.scaleMode = .ResizeFill
+            let transition = SKTransition.flipVerticalWithDuration(1)
+            view!.presentScene(menuScene, transition: transition)
+        }
+    }
+    
+    @objc func playWrongPairSound(notification: NSNotification) {
+        runAction(SKAction.playSoundFileNamed("power_down.mp3", waitForCompletion: false))
+    }
+    
+    @objc func playCorrectPairSound(notification: NSNotification) {
+        runAction(SKAction.playSoundFileNamed("power_up.mp3", waitForCompletion: false))
+    }
+    
 }

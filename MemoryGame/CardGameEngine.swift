@@ -97,7 +97,7 @@ class CardGameEngine {
         } else if (self.difficulty == DifficultyEnum.MEDIUM) {
             numOfPairs = 5
         } else {
-            numOfPairs = 9
+            numOfPairs = 10
         }
         
         // Shuffling the primary deck.
@@ -159,6 +159,9 @@ class CardGameEngine {
         if(card1 != nil && card2 != nil) { //deffensive programming
             card1?.flip()
             card2?.flip()
+            
+            self.postNotificationName(Constants.CARD_PAIR_DIFFERENT)
+            
             resetRevealedCards()
         }
     }
@@ -182,14 +185,21 @@ class CardGameEngine {
         print("NOTIFICATION: Card revealed")
         if(areRevealedCardsEqual()){
             print("CARDS ARE EQUAL!!!")
+            
+            self.postNotificationName(Constants.CARD_PAIR_EQUAL)
+            
             resetRevealedCards()
         } else if(card1 != nil && card2 != nil){
             print("CARDS ARE DIFFERENT")
             
-            delay(2.0) {
+            delay(1.0) {
                 self.hideRevealedCards()
             }
         }
+    }
+    
+    func postNotificationName (notificationName:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     
     func delay(delay: Double, closure: ()->()) {

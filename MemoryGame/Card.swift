@@ -74,12 +74,14 @@ class Card: SKSpriteNode {
             reveal()
             postNotificationName(Constants.CARD_REVEAL_NOTIFY)
         }
+        
     }
     
     
     func reveal() -> Bool {
         if(!faceUp){
             if(doFlip()) {
+                runAction(SKAction.playSoundFileNamed("card-flip.wav", waitForCompletion: false))
                 return true
             } else {
                 return false

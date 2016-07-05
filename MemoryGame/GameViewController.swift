@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,9 +20,9 @@ class GameViewController: UIViewController {
         // sceneView.showsNodeCount = true
         sceneView.ignoresSiblingOrder = true
         
-        let scene = GameMenuScene(size: view.bounds.size)
-        scene.scaleMode = .ResizeFill
-        sceneView.presentScene(scene)
+        let menuScene = GameMenuScene(size: view.bounds.size)
+        menuScene.scaleMode = .ResizeFill
+        sceneView.presentScene(menuScene)
         
         /*
         super.viewDidLoad()
@@ -38,4 +39,5 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
 }

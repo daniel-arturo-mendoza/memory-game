@@ -12,6 +12,8 @@ import SpriteKit
 class GameMenuScene: SKScene {
     
     let modelName = UIDevice.currentDevice().modelName
+    let backgroundMusic = SKAudioNode(fileNamed: "menu_bck_music.aac")
+    
     var easyBtn:DifficultyButton?
     var medBtn:DifficultyButton?
     var hardBtn:DifficultyButton?
@@ -24,12 +26,27 @@ class GameMenuScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        removeAllChildren()
+    }
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundColor = (UIColor.blackColor())
         
         addButtons()
         addListeners()
+        addBackgroundMusic()
+    }
+    
+    private func addBackgroundMusic() {
+        //We wait one second before playing the background music to avoid
+        //music overlap and buggy behaviour
+        
+        runAction(SKAction.waitForDuration(0.5), completion: {
+            self.addChild(self.backgroundMusic)
+        })
     }
     
     private func addButtons() {
@@ -61,11 +78,15 @@ class GameMenuScene: SKScene {
     private func startGame(difficulty: DifficultyEnum) {
         CardGameEngine.INSTANCE.configureGame(difficulty)
         let gameScene = GameScene(size: view!.bounds.size)
-        let transition = SKTransition.fadeWithDuration(2)
-        view!.presentScene(gameScene, transition: transition)
+        let transition = SKTransition.fadeWithDuration(4)
         
+        //runAction(SKAction.waitForDuration(4), completion: {
+        //    self.backgroundMusic.runAction(SKAction.changeVolumeBy(100, duration: 2))
+        //})
+        
+        view!.presentScene(gameScene, transition: transition)
     }
-    
+
     private func addListeners() {
         NSNotificationCenter.defaultCenter().addObserver(
             self, selector: #selector(GameMenuScene.actOnButton(_:)), name: Constants.START_GAME_EASY, object: easyBtn)

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		B003A1A71D21A3C4000EF285 /* GameMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */; };
 		B003A1A91D21ADC0000EF285 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A81D21ADC0000EF285 /* Button.swift */; };
+		B01F69821D29A6FA00B7D87D /* menu_bck_music.aac in Resources */ = {isa = PBXBuildFile; fileRef = B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */; };
+		B01F69841D2B277500B7D87D /* card-flip.wav in Resources */ = {isa = PBXBuildFile; fileRef = B01F69831D2B277500B7D87D /* card-flip.wav */; };
+		B01F69861D2B344200B7D87D /* power_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B01F69851D2B344200B7D87D /* power_down.mp3 */; };
+		B01F69881D2B439A00B7D87D /* power_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B01F69871D2B439900B7D87D /* power_up.mp3 */; };
 		B040E7C91D22BA4E003A1660 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */; };
 		B04A85D31D18AFDF00147F28 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A85D21D18AFDF00147F28 /* Constants.swift */; };
 		B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532A1D24136700386F2D /* ButtonTextures.atlas */; };
@@ -53,6 +57,10 @@
 /* Begin PBXFileReference section */
 		B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuScene.swift; sourceTree = "<group>"; };
 		B003A1A81D21ADC0000EF285 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu_bck_music.aac; sourceTree = "<group>"; };
+		B01F69831D2B277500B7D87D /* card-flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "card-flip.wav"; sourceTree = "<group>"; };
+		B01F69851D2B344200B7D87D /* power_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = power_down.mp3; sourceTree = "<group>"; };
+		B01F69871D2B439900B7D87D /* power_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = power_up.mp3; sourceTree = "<group>"; };
 		B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		B04A85D21D18AFDF00147F28 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B058532A1D24136700386F2D /* ButtonTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ButtonTextures.atlas; sourceTree = "<group>"; };
@@ -105,6 +113,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01F69801D29A6D000B7D87D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B01F69851D2B344200B7D87D /* power_down.mp3 */,
+				B01F69871D2B439900B7D87D /* power_up.mp3 */,
+				B01F69831D2B277500B7D87D /* card-flip.wav */,
+				B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		B07FFF001CC3F78000DEE757 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +147,7 @@
 		B07FFF0B1CC3F78000DEE757 /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				B01F69801D29A6D000B7D87D /* Sounds */,
 				B058532E1D2460B100386F2D /* CardTexturesMin.atlas */,
 				B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */,
 				B058532A1D24136700386F2D /* ButtonTextures.atlas */,
@@ -282,8 +302,12 @@
 				B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */,
 				B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */,
 				B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */,
+				B01F69861D2B344200B7D87D /* power_down.mp3 in Resources */,
+				B01F69821D29A6FA00B7D87D /* menu_bck_music.aac in Resources */,
+				B01F69841D2B277500B7D87D /* card-flip.wav in Resources */,
 				B096CC181D0DDB02007E8C5B /* CardTextures.atlas in Resources */,
 				B07FFF181CC3F78000DEE757 /* Assets.xcassets in Resources */,
+				B01F69881D2B439A00B7D87D /* power_up.mp3 in Resources */,
 				B07FFF161CC3F78000DEE757 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
