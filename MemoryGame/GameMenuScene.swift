@@ -83,14 +83,6 @@ class GameMenuScene: SKScene {
         addChild(medBtn!)
         addChild(hardBtn!)
     }
-    
-    /*private func startGame(difficulty: DifficultyEnum) {
-        CardGameEngine.INSTANCE.configureGame(difficulty)
-        let gameScene = GameScene(size: view!.bounds.size)
-        let transition = SKTransition.fadeWithDuration(4)
-        
-        view!.presentScene(gameScene, transition: transition)
-    }*/
 
     private func addListeners() {
         NSNotificationCenter.defaultCenter().addObserver(
@@ -104,7 +96,7 @@ class GameMenuScene: SKScene {
     }
     
     @objc func actOnButton(notification: NSNotification) {
-        print("NOTIFICATION: Difficulty Button pressed")
+        print("<GameMenuScene> Difficulty Button pressed. Notifying to GameViewController")
         
         if(notification.name == Constants.START_GAME_EASY){
             postNotificationName(Constants.START_GAME_EASY)

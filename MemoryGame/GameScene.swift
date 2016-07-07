@@ -124,30 +124,9 @@ class GameScene: SKScene {
             addChild(_card)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: #selector(GameScene.actOnButton(_:)), name: Constants.GAME_MENU, object: menuButton)
-        menuButton.action = Constants.GAME_MENU
+        menuButton.action = Constants.GAME_MODAL_MENU
+        
         addChild(menuButton)
-        
-        //bgImage.position = CGPointMake(self.size.width/2, self.size.height/2)
-        //self.addChild(bgImage)
-        
-    }
-
-    @objc func actOnButton(notification: NSNotification) {
-        print("NOTIFICATION: Menu Button pressed")
-        
-        postNotificationName(Constants.GAME_MODAL_MENU)
-        
-        //THIS COMMENT WORKS!! DO NOT DELETE
-        /*if(notification.name == Constants.GAME_MENU) {
-            CardGameEngine.INSTANCE.configureGame(DifficultyEnum.EASY)
-            
-            let menuScene = GameMenuScene(size: view!.bounds.size)
-            menuScene.scaleMode = .ResizeFill
-            let transition = SKTransition.flipVerticalWithDuration(1)
-            view!.presentScene(menuScene, transition: transition)
-        }*/
     }
     
     @objc func playWrongPairSound(notification: NSNotification) {

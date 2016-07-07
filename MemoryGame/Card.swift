@@ -28,16 +28,10 @@ class Card: SKSpriteNode {
         super.init(texture: frontTexture, color: UIColor.clearColor(), size: frontTexture.size())
         userInteractionEnabled = true
         name = imageNamedFront
-        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for _ in touches {
-            
-            //if touch.tapCount > 1 {
-            //reveal()
-            //}
-            
             // note: removed references to touchedNode
             // 'self' in most cases is not required in Swift
             zPosition = 15
@@ -74,9 +68,7 @@ class Card: SKSpriteNode {
             reveal()
             postNotificationName(Constants.CARD_REVEAL_NOTIFY)
         }
-        
     }
-    
     
     func reveal() -> Bool {
         if(!faceUp){
@@ -103,7 +95,6 @@ class Card: SKSpriteNode {
     }
     
     func flip() {
-        
         if faceUp {
             self.texture = self.backTexture
             self.faceUp = false
@@ -117,12 +108,10 @@ class Card: SKSpriteNode {
     }
     
     func isFaceUp() -> Bool{
-    
         return self.faceUp
     }
     
     func postNotificationName (notificationName:String) {
-        
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     

@@ -27,7 +27,7 @@ class ModalViewController: UIViewController {
                                   (image1?.size.width)!,
                                   (image1?.size.height)!)
         buttonContinue.setImage(image1, forState: .Normal)
-        //button.addTarget(self, action: "btnTouched:", forControlEvents:.TouchUpInside)
+        buttonContinue.addTarget(self, action: #selector(ModalViewController.actionContinue), forControlEvents:.TouchUpInside)
         view.addSubview(buttonContinue)
         
         let image2 = UIImage(named: "go_to_menu") as UIImage?
@@ -37,15 +37,22 @@ class ModalViewController: UIViewController {
                                   (image2?.size.width)!,
                                   (image2?.size.height)!)
         buttonGoToMenu.setImage(image2, forState: .Normal)
-        //button.addTarget(self, action: "btnTouched:", forControlEvents:.TouchUpInside)
+        buttonGoToMenu.addTarget(self, action: #selector(ModalViewController.actionGoToMenu), forControlEvents:.TouchUpInside)
         view.addSubview(buttonGoToMenu)
-
-
     }
     
-    /*
-     toBePresentedVC.view.backgroundColor = UIColor.clearColor()
-     presentingViewController.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-     presentingViewController.presentViewController(self, animated: true completion: nil)
-     */
+    @objc func actionContinue() {
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
+    
+    @objc func actionGoToMenu() {
+        //Notify game view controller to show the menu
+        self.dismissViewControllerAnimated(true, completion: {});
+        postNotificationName(Constants.GAME_MENU)
+    }
+    
+    func postNotificationName (notificationName:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
+    }
+    
 }
