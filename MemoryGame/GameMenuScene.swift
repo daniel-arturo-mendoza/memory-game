@@ -116,7 +116,7 @@ class GameMenuScene: SKScene {
             postNotificationName(Constants.START_GAME_HARD)
             
             //TODO: REMOVE ME
-            postNotificationName(Constants.GAME_MODAL_MENU)
+            //postNotificationName(Constants.GAME_MODAL_MENU)
             
             //startGame(DifficultyEnum.HARD)
         }

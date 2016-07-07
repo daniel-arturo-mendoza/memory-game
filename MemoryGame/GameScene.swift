@@ -137,14 +137,17 @@ class GameScene: SKScene {
     @objc func actOnButton(notification: NSNotification) {
         print("NOTIFICATION: Menu Button pressed")
         
-        if(notification.name == Constants.GAME_MENU) {
+        postNotificationName(Constants.GAME_MODAL_MENU)
+        
+        //THIS COMMENT WORKS!! DO NOT DELETE
+        /*if(notification.name == Constants.GAME_MENU) {
             CardGameEngine.INSTANCE.configureGame(DifficultyEnum.EASY)
             
             let menuScene = GameMenuScene(size: view!.bounds.size)
             menuScene.scaleMode = .ResizeFill
             let transition = SKTransition.flipVerticalWithDuration(1)
             view!.presentScene(menuScene, transition: transition)
-        }
+        }*/
     }
     
     @objc func playWrongPairSound(notification: NSNotification) {
@@ -153,6 +156,10 @@ class GameScene: SKScene {
     
     @objc func playCorrectPairSound(notification: NSNotification) {
         runAction(SKAction.playSoundFileNamed("power_up.mp3", waitForCompletion: false))
+    }
+    
+    func postNotificationName (notificationName:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     
 }
