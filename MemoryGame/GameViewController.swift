@@ -11,6 +11,9 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
+    var menuScene: GameMenuScene?
+    var gameScene: GameScene?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,24 +23,58 @@ class GameViewController: UIViewController {
         // sceneView.showsNodeCount = true
         sceneView.ignoresSiblingOrder = true
         
-        let menuScene = GameMenuScene(size: view.bounds.size)
-        menuScene.scaleMode = .ResizeFill
+        menuScene = GameMenuScene(size: view.bounds.size)
+        menuScene!.scaleMode = .ResizeFill
         sceneView.presentScene(menuScene)
         
-        /*
-        super.viewDidLoad()
-        let scene = GameScene(size: view.bounds.size)
-        let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .ResizeFill
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(actOnDifficultySelection(_:)), name: Constants.START_GAME_EASY, object: menuScene)
         
-        skView.presentScene(scene)*/
-    }
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(actOnDifficultySelection(_:)), name: Constants.START_GAME_MEDIUM, object: menuScene)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(actOnDifficultySelection(_:)), name: Constants.START_GAME_HARD, object: menuScene)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(showModal(_:)), name: Constants.GAME_MODAL_MENU, object: gameScene)
+        
+       }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    private func startGame(difficulty: DifficultyEnum) {
+        CardGameEngine.INSTANCE.configureGame(difficulty)
+        
+        gameScene = GameScene(size: view!.bounds.size)
+        let transition = SKTransition.fadeWithDuration(4)
+        let _sceneView = view as! SKView
+        
+        _sceneView.ignoresSiblingOrder = true
+        _sceneView.presentScene(gameScene!, transition: transition)
+    }
+    
+    @objc func actOnDifficultySelection(notification: NSNotification) {
+        print("NOTIFICATION: Difficulty Button pressed")
+        
+        if(notification.name == Constants.START_GAME_EASY){
+            startGame(DifficultyEnum.EASY)
+        } else if (notification.name == Constants.START_GAME_MEDIUM){
+            startGame(DifficultyEnum.MEDIUM)
+        } else {
+            startGame(DifficultyEnum.HARD)
+        }
+    }
+    
+    @objc func showModal(notification: NSNotification) {
+        print("Notification: TODO: Showing Modal Dialog")
+        
+        //Uncomment to show the modal dialog
+        let modalViewController = ModalViewController()
+        modalViewController.modalPresentationStyle = .OverCurrentContext
+        presentViewController(modalViewController, animated: true, completion: nil)
     }
     
 }

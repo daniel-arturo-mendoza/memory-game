@@ -116,7 +116,8 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        backgroundColor = (UIColor.blackColor())
+        
+        backgroundColor = (UIColor.whiteColor())
         
         for _card in deck {
             _card.flip()//this is a workaround. need to think in a better implemtation
@@ -127,6 +128,10 @@ class GameScene: SKScene {
             self, selector: #selector(GameScene.actOnButton(_:)), name: Constants.GAME_MENU, object: menuButton)
         menuButton.action = Constants.GAME_MENU
         addChild(menuButton)
+        
+        //bgImage.position = CGPointMake(self.size.width/2, self.size.height/2)
+        //self.addChild(bgImage)
+        
     }
 
     @objc func actOnButton(notification: NSNotification) {

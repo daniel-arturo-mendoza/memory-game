@@ -19,6 +19,7 @@ class Constants {
     static let START_GAME_HARD:String = "game.event.hard"
     
     static let GAME_MENU:String = "game.event.menu"
+    static let GAME_MODAL_MENU:String = "game.event.modal.menu"
     
     static let BIG_CARDS_5S:String = "100x141"
     static let MEDIUM_CARDS_5S:String = "70x99"

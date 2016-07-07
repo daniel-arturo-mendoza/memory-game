@@ -13,10 +13,13 @@ class GameMenuScene: SKScene {
     
     let modelName = UIDevice.currentDevice().modelName
     let backgroundMusic = SKAudioNode(fileNamed: "menu_bck_music.aac")
+    let bgImage = SKSpriteNode(imageNamed: "main_title_300x108")
     
     var easyBtn:DifficultyButton?
     var medBtn:DifficultyButton?
     var hardBtn:DifficultyButton?
+    
+    //var gameScene: GameScene?
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -33,11 +36,17 @@ class GameMenuScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        backgroundColor = (UIColor.blackColor())
+        backgroundColor = (UIColor.whiteColor())
         
+        addTitle()
         addButtons()
         addListeners()
         addBackgroundMusic()
+    }
+    
+    private func addTitle() {
+        bgImage.position = CGPointMake(self.size.width/2, (self.size.height/2)+160)
+        self.addChild(bgImage)
     }
     
     private func addBackgroundMusic() {
@@ -75,17 +84,13 @@ class GameMenuScene: SKScene {
         addChild(hardBtn!)
     }
     
-    private func startGame(difficulty: DifficultyEnum) {
+    /*private func startGame(difficulty: DifficultyEnum) {
         CardGameEngine.INSTANCE.configureGame(difficulty)
         let gameScene = GameScene(size: view!.bounds.size)
         let transition = SKTransition.fadeWithDuration(4)
         
-        //runAction(SKAction.waitForDuration(4), completion: {
-        //    self.backgroundMusic.runAction(SKAction.changeVolumeBy(100, duration: 2))
-        //})
-        
         view!.presentScene(gameScene, transition: transition)
-    }
+    }*/
 
     private func addListeners() {
         NSNotificationCenter.defaultCenter().addObserver(
@@ -100,13 +105,25 @@ class GameMenuScene: SKScene {
     
     @objc func actOnButton(notification: NSNotification) {
         print("NOTIFICATION: Difficulty Button pressed")
+        
         if(notification.name == Constants.START_GAME_EASY){
-            startGame(DifficultyEnum.EASY)
+            postNotificationName(Constants.START_GAME_EASY)
+            //startGame(DifficultyEnum.EASY)
         } else if (notification.name == Constants.START_GAME_MEDIUM){
-            startGame(DifficultyEnum.MEDIUM)
+            postNotificationName(Constants.START_GAME_MEDIUM)
+            //startGame(DifficultyEnum.MEDIUM)
         } else {
-            startGame(DifficultyEnum.HARD)
+            postNotificationName(Constants.START_GAME_HARD)
+            
+            //TODO: REMOVE ME
+            postNotificationName(Constants.GAME_MODAL_MENU)
+            
+            //startGame(DifficultyEnum.HARD)
         }
+    }
+    
+    func postNotificationName (notificationName:String) {
+        NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
 
 }
