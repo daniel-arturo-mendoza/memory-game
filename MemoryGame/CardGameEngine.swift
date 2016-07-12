@@ -14,6 +14,8 @@ class CardGameEngine {
     static let INSTANCE = CardGameEngine()
     
     var numOfCards = 30
+    var numOfPairs:Int = 3 //Default value
+
     var cardSize = ""
     var difficulty: DifficultyEnum = DifficultyEnum.EASY
     
@@ -52,8 +54,15 @@ class CardGameEngine {
         }
         
         for var i in (1...30) {
-            //var s = "c\(i)_\(cardSize).png"
             card = Card(imageNamedFront: "c\(i)_\(cardSize)", imageNamedBack: "c0_\(cardSize)")
+            
+            card?.id = (card?.hashValue.description)!
+            
+            card?.name = "c\(i)_\(cardSize)"
+            
+            //card?.name = "c\(i)_\(cardSize)"
+            //print(card?.name)
+            
             self.deckAllCards.append(card!)
             i += 1
         }
@@ -89,7 +98,6 @@ class CardGameEngine {
     func getShuffledDeckForGame() -> [Card] {
         var _card:Card?
         var _deck: [Card] = []
-        var numOfPairs:Int
         
         // Define the number of cards tuples according the difficulty.
         if (self.difficulty == DifficultyEnum.EASY) {
@@ -103,7 +111,7 @@ class CardGameEngine {
         // Shuffling the primary deck.
         shuffleDeck(&self.deckAllCards)
         
-        // ...then draw the first 'numOfPairs' cards
+        // ...then create the pairs of cards to be drawn
         for var i in (0 ... numOfPairs-1) {
             
             // Place the drawn card into a new deck
@@ -112,9 +120,15 @@ class CardGameEngine {
                 self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: self.deckAllCards[i])
             
             // Create a copy of the drawn card
-            _card = Card(imageNamedFront: "\(self.deckAllCards[i].id)", imageNamedBack: "c0_\(cardSize)")
+            _card = Card(imageNamedFront: "\(self.deckAllCards[i].textureName)", imageNamedBack: "c0_\(cardSize)")
             NSNotificationCenter.defaultCenter().addObserver(
                 self, selector: #selector(CardGameEngine.actOnReveal(_:)), name: Constants.CARD_REVEAL_NOTIFY, object: _card)
+            
+            // Marking this new card as copy
+            _card?.isCopy = true
+            _card?.id = (card?.hashValue.description)!
+            _card?.name = "copyOf_\(_card?.frontTexture)"
+            
             
             // Place the copied card into the new deck
             _deck.append(_card!)
@@ -177,20 +191,27 @@ class CardGameEngine {
         } else if(card2 == nil) {
             return false
         } else {
-            return (card1?.isEqual(card2))!
+            //return (card1?.isEqual(card2))!
+            return (card1?.frontTexture.description ==
+                    card2?.frontTexture.description)
         }
     }
     
     @objc func actOnReveal(notification: NSNotification) {
-        print("NOTIFICATION: Card revealed")
+        print("<CardGameEngine> Card revealed")
         if(areRevealedCardsEqual()){
-            print("CARDS ARE EQUAL!!!")
+            print("<CardGameEngine> CARDS ARE EQUAL!!!")
             
             self.postNotificationName(Constants.CARD_PAIR_EQUAL)
             
+            numOfPairs -= 1
+            if(numOfPairs == 0){
+                self.postNotificationName(Constants.GAME_END)
+            }
+            
             resetRevealedCards()
         } else if(card1 != nil && card2 != nil){
-            print("CARDS ARE DIFFERENT")
+            print("<CardGameEngine> CARDS ARE DIFFERENT")
             
             delay(1.0) {
                 self.hideRevealedCards()

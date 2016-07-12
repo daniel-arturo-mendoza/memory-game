@@ -13,14 +13,17 @@ class GameScene: SKScene {
     
     let modelName = UIDevice.currentDevice().modelName
     
-    var x:CGFloat = 100
-    var y:CGFloat = 450
+    var deck : [Card]?
     
-    var deck : [Card] = CardGameEngine.INSTANCE.getShuffledDeckForGame()
     var menuButton:Button = Button(image: "button_70x66")
     
     override init(size: CGSize) {
         super.init(size: size)
+        
+        deck = CardGameEngine.INSTANCE.getShuffledDeckForGame()
+    
+        var x:CGFloat = 100
+        var y:CGFloat = 450
         
         if(modelName == "iPhone 5s" || modelName == "Simulator") {
             
@@ -61,7 +64,7 @@ class GameScene: SKScene {
                 var xCount:CGFloat = 0
                 var yCount:CGFloat = 0
                 
-                for card in deck {
+                for card in deck! {
                     if(_index != 4){
                         card.position = CGPointMake(x + (xPad * xCount), _y)
                     } else {
@@ -81,7 +84,7 @@ class GameScene: SKScene {
                 
             } else {
             
-                for card in deck {
+                for card in deck! {
                     if(index % 2 == 0) {
                         card.position = CGPointMake(x , y - (yPad * countP))
                         countP += 1
@@ -119,9 +122,22 @@ class GameScene: SKScene {
         
         backgroundColor = (UIColor.whiteColor())
         
-        for _card in deck {
+        //JUST added. IS it needed?
+        //removeAllChildren()
+        
+        /*for _child in children {
+            print("------------")
+            print(_child)
+        }*/
+        
+        for _card in deck! {
             _card.flip()//this is a workaround. need to think in a better implemtation
-            addChild(_card)
+            
+            //let name = childNodeWithName(_card.name!)
+            //if(name == nil){
+                    addChild(_card)
+            //}
+            
         }
         
         menuButton.action = Constants.GAME_MODAL_MENU

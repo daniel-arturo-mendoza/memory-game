@@ -16,18 +16,22 @@ class Card: SKSpriteNode {
     let frontTexture: SKTexture!
     let backTexture: SKTexture!
     
+    let textureName:String!
+    
+    var isCopy:BooleanType = false
+    
     required init(coder aDecoder: NSCoder){
         fatalError("NSCoding not Supported")
     }
     
     init(imageNamedFront: String, imageNamedBack: String) {
-        id = imageNamedFront
         frontTexture = SKTexture(imageNamed: imageNamedFront)
         backTexture = SKTexture(imageNamed: imageNamedBack)
+        textureName = imageNamedFront
         
         super.init(texture: frontTexture, color: UIColor.clearColor(), size: frontTexture.size())
         userInteractionEnabled = true
-        name = imageNamedFront
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -115,16 +119,18 @@ class Card: SKSpriteNode {
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    /*override func isEqual(object: AnyObject?) -> Bool {
         if let object = object as? Card {
-            return id == object.id
+            return hashValue == object.hashValue
         } else {
             return false
         }
     }
     
-    override var hash: Int {
-        return id.hashValue
-    }
+    override var hashValue: Int {
+        get {
+            return "\(self.frontTexture),\(self.backTexture),\(self.isCopy)".hashValue
+        }
+    }*/
     
 }

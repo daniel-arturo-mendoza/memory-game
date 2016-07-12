@@ -17,6 +17,8 @@
 		B01F698C1D2DAB1100B7D87D /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01F698B1D2DAB1100B7D87D /* ModalViewController.swift */; };
 		B01F69991D2DDBE500B7D87D /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = B01F69981D2DDBE500B7D87D /* continue.png */; };
 		B01F699B1D2DDDA300B7D87D /* go_to_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = B01F699A1D2DDDA300B7D87D /* go_to_menu.png */; };
+		B032A4A01D2FEE3800FCAA9C /* ModalPopUpDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032A49F1D2FEE3800FCAA9C /* ModalPopUpDialog.swift */; };
+		B032A4A21D300AB500FCAA9C /* ModalPopUpGameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B032A4A11D300AB500FCAA9C /* ModalPopUpGameOver.swift */; };
 		B040E7C91D22BA4E003A1660 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */; };
 		B04A85D31D18AFDF00147F28 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04A85D21D18AFDF00147F28 /* Constants.swift */; };
 		B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532A1D24136700386F2D /* ButtonTextures.atlas */; };
@@ -39,6 +41,8 @@
 		B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
 		B096CC211D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
 		B0ED4E991D170B98006CF200 /* DifficultyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */; };
+		B0F9E4991D32CF2C00B3E40B /* next_level_217x60.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9E4971D32CF2C00B3E40B /* next_level_217x60.png */; };
+		B0F9E49A1D32CF2C00B3E40B /* restart_152x60.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,8 @@
 		B01F698B1D2DAB1100B7D87D /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		B01F69981D2DDBE500B7D87D /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = ButtonTextures.atlas/continue.png; sourceTree = "<group>"; };
 		B01F699A1D2DDDA300B7D87D /* go_to_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = go_to_menu.png; path = ButtonTextures.atlas/go_to_menu.png; sourceTree = "<group>"; };
+		B032A49F1D2FEE3800FCAA9C /* ModalPopUpDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalPopUpDialog.swift; sourceTree = "<group>"; };
+		B032A4A11D300AB500FCAA9C /* ModalPopUpGameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalPopUpGameOver.swift; sourceTree = "<group>"; };
 		B040E7C81D22BA4E003A1660 /* DifficultyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		B04A85D21D18AFDF00147F28 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B058532A1D24136700386F2D /* ButtonTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ButtonTextures.atlas; sourceTree = "<group>"; };
@@ -94,6 +100,8 @@
 		B096CC1C1D0DE68A007E8C5B /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGameEngine.swift; sourceTree = "<group>"; };
 		B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyEnum.swift; sourceTree = "<group>"; };
+		B0F9E4971D32CF2C00B3E40B /* next_level_217x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next_level_217x60.png; path = ButtonTextures.atlas/next_level_217x60.png; sourceTree = "<group>"; };
+		B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = restart_152x60.png; path = ButtonTextures.atlas/restart_152x60.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,8 @@
 			children = (
 				B07FFF121CC3F78000DEE757 /* GameViewController.swift */,
 				B01F698B1D2DAB1100B7D87D /* ModalViewController.swift */,
+				B032A49F1D2FEE3800FCAA9C /* ModalPopUpDialog.swift */,
+				B032A4A11D300AB500FCAA9C /* ModalPopUpGameOver.swift */,
 				B07FFF0E1CC3F78000DEE757 /* GameScene.sks */,
 				B07FFF101CC3F78000DEE757 /* GameScene.swift */,
 				B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */,
@@ -209,6 +219,8 @@
 		B07FFF0B1CC3F78000DEE757 /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				B0F9E4971D32CF2C00B3E40B /* next_level_217x60.png */,
+				B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */,
 				B01F699A1D2DDDA300B7D87D /* go_to_menu.png */,
 				B01F69981D2DDBE500B7D87D /* continue.png */,
 				B01F69891D2C622200B7D87D /* BackgroundTextures.atlas */,
@@ -352,8 +364,10 @@
 				B01F69991D2DDBE500B7D87D /* continue.png in Resources */,
 				B058532D1D241B7500386F2D /* CardTexturesRetina.atlas in Resources */,
 				B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */,
+				B0F9E49A1D32CF2C00B3E40B /* restart_152x60.png in Resources */,
 				B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */,
 				B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */,
+				B0F9E4991D32CF2C00B3E40B /* next_level_217x60.png in Resources */,
 				B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */,
 				B01F69861D2B344200B7D87D /* power_down.mp3 in Resources */,
 				B01F698A1D2C622200B7D87D /* BackgroundTextures.atlas in Resources */,
@@ -394,11 +408,13 @@
 				B07FFF111CC3F78000DEE757 /* GameScene.swift in Sources */,
 				B01F698C1D2DAB1100B7D87D /* ModalViewController.swift in Sources */,
 				B07FFF131CC3F78000DEE757 /* GameViewController.swift in Sources */,
+				B032A4A21D300AB500FCAA9C /* ModalPopUpGameOver.swift in Sources */,
 				B003A1A91D21ADC0000EF285 /* Button.swift in Sources */,
 				B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */,
 				B096CC1A1D0DDBF9007E8C5B /* Card.swift in Sources */,
 				B040E7C91D22BA4E003A1660 /* DifficultyButton.swift in Sources */,
 				B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */,
+				B032A4A01D2FEE3800FCAA9C /* ModalPopUpDialog.swift in Sources */,
 				B04A85D31D18AFDF00147F28 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

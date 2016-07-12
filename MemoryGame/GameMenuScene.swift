@@ -106,11 +106,6 @@ class GameMenuScene: SKScene {
             //startGame(DifficultyEnum.MEDIUM)
         } else {
             postNotificationName(Constants.START_GAME_HARD)
-            
-            //TODO: REMOVE ME
-            //postNotificationName(Constants.GAME_MODAL_MENU)
-            
-            //startGame(DifficultyEnum.HARD)
         }
     }
     
