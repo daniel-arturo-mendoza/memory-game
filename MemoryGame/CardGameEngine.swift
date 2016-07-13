@@ -103,7 +103,7 @@ class CardGameEngine {
         if (self.difficulty == DifficultyEnum.EASY) {
             numOfPairs = 3
         } else if (self.difficulty == DifficultyEnum.MEDIUM) {
-            numOfPairs = 5
+            numOfPairs = 6
         } else {
             numOfPairs = 10
         }

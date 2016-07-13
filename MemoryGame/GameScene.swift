@@ -79,11 +79,44 @@ class GameScene: SKScene {
                     _index += 1
                     xCount += 1
                 }
+                menuButton.position = CGPointMake(50,50)
                 
+            } else if(CardGameEngine.INSTANCE.difficulty == DifficultyEnum.MEDIUM) {
+                x = 70
+                y = 510
+                
+                xPad = 90
+                yPad = 110
+                
+                var _index = 0
+                var _y:CGFloat = y
+                var xCount:CGFloat = 0
+                var yCount:CGFloat = 0
+                
+                for card in deck! {
+                    if(_index != 3){
+                        card.position = CGPointMake(x + (xPad * xCount), _y)
+                    } else {
+                        _index = 0
+                        xCount = 0
+                        yCount += 1
+                        _y -= yPad
+                        card.position = CGPointMake(x + (xPad * xCount), _y)
+                    }
+                    //print("\(card.id)+: \(card.position)")
+                    
+                    _index += 1
+                    xCount += 1
+                }
                 menuButton.position = CGPointMake(50,50)
                 
             } else {
-            
+                x = 100
+                y = 480
+                
+                xPad = 120
+                yPad = 160
+                
                 for card in deck! {
                     if(index % 2 == 0) {
                         card.position = CGPointMake(x , y - (yPad * countP))
@@ -94,15 +127,8 @@ class GameScene: SKScene {
                     }
                     index += 1
                 }
+                menuButton.position = CGPointMake(50,50)
             }
-            /*deck[0].position = CGPointMake(x , y)
-            deck[2].position = CGPointMake(x , y - yPad)
-            deck[4].position = CGPointMake(x , y - (yPad + yPad))
-            
-            deck[1].position = CGPointMake(x + xPad, y)
-            deck[3].position = CGPointMake(x + xPad, y - yPad)
-            deck[5].position = CGPointMake(x + xPad, y - (yPad + yPad))
-            */
         }
         
         NSNotificationCenter.defaultCenter().addObserver(
@@ -111,6 +137,8 @@ class GameScene: SKScene {
         NSNotificationCenter.defaultCenter().addObserver(
             self, selector: #selector(self.playCorrectPairSound(_:)), name: Constants.CARD_PAIR_EQUAL, object: CardGameEngine.INSTANCE)
         
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: #selector(self.playGameWinSound(_:)), name: Constants.GAME_END, object: CardGameEngine.INSTANCE)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -122,22 +150,9 @@ class GameScene: SKScene {
         
         backgroundColor = (UIColor.whiteColor())
         
-        //JUST added. IS it needed?
-        //removeAllChildren()
-        
-        /*for _child in children {
-            print("------------")
-            print(_child)
-        }*/
-        
         for _card in deck! {
             _card.flip()//this is a workaround. need to think in a better implemtation
-            
-            //let name = childNodeWithName(_card.name!)
-            //if(name == nil){
-                    addChild(_card)
-            //}
-            
+            addChild(_card)
         }
         
         menuButton.action = Constants.GAME_MODAL_MENU
@@ -151,6 +166,10 @@ class GameScene: SKScene {
     
     @objc func playCorrectPairSound(notification: NSNotification) {
         runAction(SKAction.playSoundFileNamed("power_up.mp3", waitForCompletion: false))
+    }
+    
+    @objc func playGameWinSound(notification: NSNotification) {
+        runAction(SKAction.playSoundFileNamed("game_win.mp3", waitForCompletion: false))
     }
     
     func postNotificationName (notificationName:String) {

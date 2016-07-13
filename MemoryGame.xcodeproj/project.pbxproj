@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B003A1A71D21A3C4000EF285 /* GameMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */; };
 		B003A1A91D21ADC0000EF285 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003A1A81D21ADC0000EF285 /* Button.swift */; };
+		B01CDF401D365A63008F380E /* game_win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B01CDF3F1D365A63008F380E /* game_win.mp3 */; };
+		B01CDF441D366123008F380E /* level_complete.png in Resources */ = {isa = PBXBuildFile; fileRef = B01CDF431D366123008F380E /* level_complete.png */; };
 		B01F69821D29A6FA00B7D87D /* menu_bck_music.aac in Resources */ = {isa = PBXBuildFile; fileRef = B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */; };
 		B01F69841D2B277500B7D87D /* card-flip.wav in Resources */ = {isa = PBXBuildFile; fileRef = B01F69831D2B277500B7D87D /* card-flip.wav */; };
 		B01F69861D2B344200B7D87D /* power_down.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B01F69851D2B344200B7D87D /* power_down.mp3 */; };
@@ -65,6 +67,8 @@
 /* Begin PBXFileReference section */
 		B003A1A61D21A3C4000EF285 /* GameMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuScene.swift; sourceTree = "<group>"; };
 		B003A1A81D21ADC0000EF285 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		B01CDF3F1D365A63008F380E /* game_win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_win.mp3; sourceTree = "<group>"; };
+		B01CDF431D366123008F380E /* level_complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level_complete.png; sourceTree = "<group>"; };
 		B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu_bck_music.aac; sourceTree = "<group>"; };
 		B01F69831D2B277500B7D87D /* card-flip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "card-flip.wav"; sourceTree = "<group>"; };
 		B01F69851D2B344200B7D87D /* power_down.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = power_down.mp3; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				B01F69851D2B344200B7D87D /* power_down.mp3 */,
+				B01CDF3F1D365A63008F380E /* game_win.mp3 */,
 				B01F69871D2B439900B7D87D /* power_up.mp3 */,
 				B01F69831D2B277500B7D87D /* card-flip.wav */,
 				B01F69811D29A6FA00B7D87D /* menu_bck_music.aac */,
@@ -223,6 +228,7 @@
 				B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */,
 				B01F699A1D2DDDA300B7D87D /* go_to_menu.png */,
 				B01F69981D2DDBE500B7D87D /* continue.png */,
+				B01CDF431D366123008F380E /* level_complete.png */,
 				B01F69891D2C622200B7D87D /* BackgroundTextures.atlas */,
 				B01F69801D29A6D000B7D87D /* Sounds */,
 				B058532E1D2460B100386F2D /* CardTexturesMin.atlas */,
@@ -362,11 +368,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B01F69991D2DDBE500B7D87D /* continue.png in Resources */,
+				B01CDF401D365A63008F380E /* game_win.mp3 in Resources */,
 				B058532D1D241B7500386F2D /* CardTexturesRetina.atlas in Resources */,
 				B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */,
 				B0F9E49A1D32CF2C00B3E40B /* restart_152x60.png in Resources */,
 				B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */,
 				B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */,
+				B01CDF441D366123008F380E /* level_complete.png in Resources */,
 				B0F9E4991D32CF2C00B3E40B /* next_level_217x60.png in Resources */,
 				B07FFF1B1CC3F78000DEE757 /* LaunchScreen.storyboard in Resources */,
 				B01F69861D2B344200B7D87D /* power_down.mp3 in Resources */,
