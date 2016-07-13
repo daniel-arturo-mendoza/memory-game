@@ -54,6 +54,8 @@ class Button: SKSpriteNode {
             //runAction(wiggleRepeat, withKey: "wiggle")
             runAction(wiggle, withKey: "wiggle")
         }
+        
+        runAction(SKAction.playSoundFileNamed("button_sound.wav", waitForCompletion: false))
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {

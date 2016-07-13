@@ -17,6 +17,12 @@ class GameScene: SKScene {
     
     var menuButton:Button = Button(image: "button_70x66")
     
+    let backgroundMusicEasy = SKAudioNode(fileNamed: "easy_back_music.mp3")
+    
+    let backgroundMusicMedium = SKAudioNode(fileNamed: "medium_back_music.mp3")
+    
+    let backgroundMusicHard = SKAudioNode(fileNamed: "hard_back_music.mp3")
+    
     override init(size: CGSize) {
         super.init(size: size)
         
@@ -147,6 +153,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        addBackgroundMusic()
         
         backgroundColor = (UIColor.whiteColor())
         
@@ -174,6 +181,21 @@ class GameScene: SKScene {
     
     func postNotificationName (notificationName:String) {
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
+    }
+    
+    private func addBackgroundMusic() {
+        //We wait one second before playing the background music to avoid
+        //music overlap and buggy behaviour
+        
+        runAction(SKAction.waitForDuration(0.5), completion: {
+            if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.EASY) {
+                self.addChild(self.backgroundMusicEasy)
+            } else if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.MEDIUM) {
+                self.addChild(self.backgroundMusicMedium)
+            } else {
+                self.addChild(self.backgroundMusicHard)
+            }
+        })
     }
     
 }
