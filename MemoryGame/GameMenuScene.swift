@@ -31,7 +31,6 @@ class GameMenuScene: SKScene {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        removeAllChildren()
     }
     
     override func didMoveToView(view: SKView) {
