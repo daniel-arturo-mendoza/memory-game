@@ -46,6 +46,7 @@
 		B096CC1E1D0DE68A007E8C5B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1C1D0DE68A007E8C5B /* Device.swift */; };
 		B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
 		B096CC211D0EEE27007E8C5B /* CardGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */; };
+		B09D795E1D479A3300448EFD /* GameNotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D795D1D479A3300448EFD /* GameNotificationProtocol.swift */; };
 		B0ED4E991D170B98006CF200 /* DifficultyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */; };
 		B0F9E4991D32CF2C00B3E40B /* next_level_217x60.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9E4971D32CF2C00B3E40B /* next_level_217x60.png */; };
 		B0F9E49A1D32CF2C00B3E40B /* restart_152x60.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */; };
@@ -111,6 +112,7 @@
 		B096CC191D0DDBF9007E8C5B /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B096CC1C1D0DE68A007E8C5B /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		B096CC1F1D0EEE27007E8C5B /* CardGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGameEngine.swift; sourceTree = "<group>"; };
+		B09D795D1D479A3300448EFD /* GameNotificationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameNotificationProtocol.swift; sourceTree = "<group>"; };
 		B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifficultyEnum.swift; sourceTree = "<group>"; };
 		B0F9E4971D32CF2C00B3E40B /* next_level_217x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next_level_217x60.png; path = ButtonTextures.atlas/next_level_217x60.png; sourceTree = "<group>"; };
 		B0F9E4981D32CF2C00B3E40B /* restart_152x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = restart_152x60.png; path = ButtonTextures.atlas/restart_152x60.png; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				B096CC1C1D0DE68A007E8C5B /* Device.swift */,
 				B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */,
 				B04A85D21D18AFDF00147F28 /* Constants.swift */,
+				B09D795D1D479A3300448EFD /* GameNotificationProtocol.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				B032A4A21D300AB500FCAA9C /* ModalPopUpGameOver.swift in Sources */,
 				B003A1A91D21ADC0000EF285 /* Button.swift in Sources */,
 				B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */,
+				B09D795E1D479A3300448EFD /* GameNotificationProtocol.swift in Sources */,
 				B096CC1A1D0DDBF9007E8C5B /* Card.swift in Sources */,
 				B040E7C91D22BA4E003A1660 /* DifficultyButton.swift in Sources */,
 				B096CC201D0EEE27007E8C5B /* CardGameEngine.swift in Sources */,

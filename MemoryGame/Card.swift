@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Card: SKSpriteNode {
+class Card: SKSpriteNode, GameNotificationProtocol {
     
     var faceUp = true
     var id = "";

@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class GameMenuScene: SKScene {
+class GameMenuScene: SKScene, GameNotificationProtocol {
     
     let modelName = UIDevice.currentDevice().modelName
     let backgroundMusic = SKAudioNode(fileNamed: "menu_bck_music.aac")

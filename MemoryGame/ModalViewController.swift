@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-class ModalViewController: UIViewController {
+class ModalViewController: UIViewController, GameNotificationProtocol {
     
     @objc func actionContinue() {
         self.dismissViewControllerAnimated(true, completion: {})

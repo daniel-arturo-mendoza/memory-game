@@ -8,10 +8,13 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
-class CardGameEngine {
+class CardGameEngine: GameNotificationProtocol {
     
     static let INSTANCE = CardGameEngine()
+    
+    let modelName = UIDevice.currentDevice().modelName
     
     var numOfCards = 30
     var numOfPairs:Int = 3 //Default value
@@ -45,13 +48,32 @@ class CardGameEngine {
     private func initDeck() {
         self.deckAllCards.removeAll()
         
-        if (difficulty == DifficultyEnum.EASY) {
-            cardSize = Constants.BIG_CARDS_5S
-        } else if (difficulty == DifficultyEnum.MEDIUM) {
-            cardSize = Constants.MEDIUM_CARDS_5S
+        
+        if(/*modelName == "iPhone 5s"*/ modelName == "XXSimulator") {
+            if (difficulty == DifficultyEnum.EASY) {
+                cardSize = Constants.BIG_CARDS_5S
+            } else if (difficulty == DifficultyEnum.MEDIUM) {
+                cardSize = Constants.MEDIUM_CARDS_5S
+            } else {
+                cardSize = Constants.SMALL_CARDS_5S
+            }
+        
+        } else if (/*modelName == "iPhone 6 Plus" || modelName == "iPhone 6s Plus"*/ modelName == "Simulator") {
+            
+            if (difficulty == DifficultyEnum.EASY) {
+                cardSize = Constants.BIG_CARDS_5S
+            } else if (difficulty == DifficultyEnum.MEDIUM) {
+                cardSize = Constants.MEDIUM_CARDS_5S
+            } else {
+                cardSize = Constants.SMALL_CARDS_5S
+            }
+        
         } else {
+            
             cardSize = Constants.SMALL_CARDS_5S
         }
+        
+        
         
         for var i in (1...30) {
             card = Card(imageNamedFront: "c\(i)_\(cardSize)", imageNamedBack: "c0_\(cardSize)")

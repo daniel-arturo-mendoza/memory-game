@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Button: SKSpriteNode {
+class Button: SKSpriteNode, GameNotificationProtocol {
     
     var id = "";
     var buttonTexture: SKTexture!
