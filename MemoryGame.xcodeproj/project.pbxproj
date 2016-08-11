@@ -30,6 +30,7 @@
 		B058532B1D24136700386F2D /* ButtonTextures.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532A1D24136700386F2D /* ButtonTextures.atlas */; };
 		B058532D1D241B7500386F2D /* CardTexturesRetina.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */; };
 		B058532F1D2460B100386F2D /* CardTexturesMin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B058532E1D2460B100386F2D /* CardTexturesMin.atlas */; };
+		B07BCE931D5B955A00CF1BC4 /* DeckSizeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07BCE921D5B955A00CF1BC4 /* DeckSizeEnum.swift */; };
 		B07FFF0D1CC3F78000DEE757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */; };
 		B07FFF0F1CC3F78000DEE757 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B07FFF0E1CC3F78000DEE757 /* GameScene.sks */; };
 		B07FFF111CC3F78000DEE757 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FFF101CC3F78000DEE757 /* GameScene.swift */; };
@@ -93,6 +94,7 @@
 		B058532A1D24136700386F2D /* ButtonTextures.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ButtonTextures.atlas; sourceTree = "<group>"; };
 		B058532C1D241B7500386F2D /* CardTexturesRetina.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTexturesRetina.atlas; sourceTree = "<group>"; };
 		B058532E1D2460B100386F2D /* CardTexturesMin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CardTexturesMin.atlas; sourceTree = "<group>"; };
+		B07BCE921D5B955A00CF1BC4 /* DeckSizeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckSizeEnum.swift; sourceTree = "<group>"; };
 		B07FFF091CC3F78000DEE757 /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07FFF0C1CC3F78000DEE757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B07FFF0E1CC3F78000DEE757 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				B0ED4E981D170B98006CF200 /* DifficultyEnum.swift */,
 				B04A85D21D18AFDF00147F28 /* Constants.swift */,
 				B09D795D1D479A3300448EFD /* GameNotificationProtocol.swift */,
+				B07BCE921D5B955A00CF1BC4 /* DeckSizeEnum.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				B0ED4E991D170B98006CF200 /* DifficultyEnum.swift in Sources */,
 				B003A1A71D21A3C4000EF285 /* GameMenuScene.swift in Sources */,
 				B07FFF111CC3F78000DEE757 /* GameScene.swift in Sources */,
+				B07BCE931D5B955A00CF1BC4 /* DeckSizeEnum.swift in Sources */,
 				B01F698C1D2DAB1100B7D87D /* ModalViewController.swift in Sources */,
 				B07FFF131CC3F78000DEE757 /* GameViewController.swift in Sources */,
 				B032A4A21D300AB500FCAA9C /* ModalPopUpGameOver.swift in Sources */,

@@ -18,7 +18,7 @@ class CardGameEngine: GameNotificationProtocol {
     
     var numOfCards = 30
     var numOfPairs:Int = 3 //Default value
-
+    
     var cardSize = ""
     var difficulty: DifficultyEnum = DifficultyEnum.EASY
     
@@ -49,16 +49,17 @@ class CardGameEngine: GameNotificationProtocol {
         self.deckAllCards.removeAll()
         
         
-        if(/*modelName == "iPhone 5s"*/ modelName == "XXSimulator") {
-            if (difficulty == DifficultyEnum.EASY) {
-                cardSize = Constants.BIG_CARDS_5S
-            } else if (difficulty == DifficultyEnum.MEDIUM) {
-                cardSize = Constants.MEDIUM_CARDS_5S
-            } else {
-                cardSize = Constants.SMALL_CARDS_5S
-            }
-        
-        } else if (/*modelName == "iPhone 6 Plus" || modelName == "iPhone 6s Plus"*/ modelName == "Simulator") {
+        if(modelName == "iPhone 4s") {
+            cardSize = Constants.SMALL_CARDS_5S
+            
+        } else if (/*
+             modelName == "iPhone 5"  ||
+             modelName == "iPhone 5s" ||
+             modelName == "iPhone 6"  ||
+             modelName == "iPhone 6 Plus" ||
+             modelName == "iPhone 6s"     ||
+             modelName == "iPhone 6s Plus"*/
+            modelName == "Simulator") {
             
             if (difficulty == DifficultyEnum.EASY) {
                 cardSize = Constants.BIG_CARDS_5S
@@ -67,10 +68,10 @@ class CardGameEngine: GameNotificationProtocol {
             } else {
                 cardSize = Constants.SMALL_CARDS_5S
             }
-        
+            
         } else {
             
-            cardSize = Constants.SMALL_CARDS_5S
+            cardSize = Constants.BIG_CARDS_5S
         }
         
         
@@ -127,7 +128,11 @@ class CardGameEngine: GameNotificationProtocol {
         } else if (self.difficulty == DifficultyEnum.MEDIUM) {
             numOfPairs = 6
         } else {
-            numOfPairs = 10
+            if(modelName == "iPhone 4s") {
+                numOfPairs = 8 // the iPhone 4s screen is smaller, so it can fit only 8 pairs
+            } else {
+                numOfPairs = 10
+            }
         }
         
         // Shuffling the primary deck.
@@ -215,7 +220,7 @@ class CardGameEngine: GameNotificationProtocol {
         } else {
             //return (card1?.isEqual(card2))!
             return (card1?.frontTexture.description ==
-                    card2?.frontTexture.description)
+                card2?.frontTexture.description)
         }
     }
     

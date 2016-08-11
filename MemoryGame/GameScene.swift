@@ -17,236 +17,47 @@ class GameScene: SKScene, GameNotificationProtocol {
     
     var menuButton:Button = Button(image: "button_70x66")
     
-    let backgroundMusicEasy = SKAudioNode(fileNamed: "easy_back_music.mp3")
+    var backgroundMusicEasy: AnyObject = ""
     
-    let backgroundMusicMedium = SKAudioNode(fileNamed: "medium_back_music.mp3")
+    var backgroundMusicMedium: AnyObject = ""
     
-    let backgroundMusicHard = SKAudioNode(fileNamed: "hard_back_music.mp3")
+    var backgroundMusicHard: AnyObject = ""
+    
     
     override init(size: CGSize) {
         super.init(size: size)
         
-        deck = CardGameEngine.INSTANCE.getShuffledDeckForGame()
-    
-        var x:CGFloat = 100
-        var y:CGFloat = 450
-        
-        if(/*modelName == "iPhone 5s"*/ modelName == "XXSimulator") {
+        if #available(iOS 9.0, *) {
+            backgroundMusicEasy = SKAudioNode(fileNamed: "easy_back_music.mp3")
+            backgroundMusicMedium = SKAudioNode(fileNamed: "medium_back_music.mp3")
+            backgroundMusicHard = SKAudioNode(fileNamed: "hard_back_music.mp3")
             
-            var xPad:CGFloat = 120
-            var yPad:CGFloat = 160
-            
-            var index = 0
-            var countP:CGFloat = 0
-            var countO:CGFloat = 0
-            
-            if (CardGameEngine.INSTANCE.cardSize == Constants.BIG_CARDS_5S) {
-                xPad = 120
-                yPad = 160
-                
-            } else if (CardGameEngine.INSTANCE.cardSize == Constants.MEDIUM_CARDS_5S) {
-                xPad = 120
-                    
-                y = 510
-                yPad = 110
-                
-            } else {
-                xPad = 120
-                yPad = 40
-            }
-                
-            if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.HARD) {
-                x = 55
-                y = 520
-                
-                xPad = 70
-                yPad = 90
-                
-                var _index = 0
-                var _y:CGFloat = y
-                var xCount:CGFloat = 0
-                var yCount:CGFloat = 0
-                
-                for card in deck! {
-                    if(_index != 4){
-                        card.position = CGPointMake(x + (xPad * xCount), _y)
-                    } else {
-                        _index = 0
-                        xCount = 0
-                        yCount += 1
-                        _y -= yPad
-                        card.position = CGPointMake(x + (xPad * xCount), _y)
-                    }
-                    //print("\(card.id)+: \(card.position)")
-                    
-                    _index += 1
-                    xCount += 1
-                }
-                menuButton.position = CGPointMake(50,50)
-                
-            } else if(CardGameEngine.INSTANCE.difficulty == DifficultyEnum.MEDIUM) {
-                x = 70
-                y = 510
-                
-                xPad = 90
-                yPad = 110
-                
-                var _index = 0
-                var _y:CGFloat = y
-                var xCount:CGFloat = 0
-                var yCount:CGFloat = 0
-                
-                for card in deck! {
-                    if(_index != 3){
-                        card.position = CGPointMake(x + (xPad * xCount), _y)
-                    } else {
-                        _index = 0
-                        xCount = 0
-                        yCount += 1
-                        _y -= yPad
-                        card.position = CGPointMake(x + (xPad * xCount), _y)
-                    }
-                    //print("\(card.id)+: \(card.position)")
-                    
-                    _index += 1
-                    xCount += 1
-                }
-                menuButton.position = CGPointMake(50,50)
-                
-            } else { // Difficulty -> EASY
-                x = 100
-                y = 480
-                
-                xPad = 120
-                yPad = 160
-                
-                for card in deck! {
-                    if(index % 2 == 0) {
-                        card.position = CGPointMake(x , y - (yPad * countP))
-                        countP += 1
-                    } else {
-                        card.position = CGPointMake(x + xPad, y - (yPad * countO))
-                        countO += 1
-                    }
-                    index += 1
-                }
-                menuButton.position = CGPointMake(50,50)
-            }
-        
-        } else { //any other iPhone will use positions according the resolution since they use the same size of cards.
-            
-            var xPadding:CGFloat = 120
-            var yPadding:CGFloat = 160
-            
-            if(deck?.count == 6) {
-                let cardWidth:CGFloat = 100
-                let cardHeight:CGFloat = 141
-                
-                xPadding = cardWidth * 0.50
-                yPadding = cardWidth * 0.10
-                
-                let totalGameSpaceWidth =  (2 * cardWidth) + xPadding
-                let totalGameSpaceHeight = (3 * cardHeight) + (yPadding * 2)
-                
-                x = (self.size.width  / 2) - (totalGameSpaceWidth  / 2) + (cardWidth / 2)
-                y = (self.size.height / 2) + (totalGameSpaceHeight / 2) - (cardHeight * 0.3)
-                
-                var counterP:CGFloat = 0
-                var counterO:CGFloat = 0
-                var index  = 0
-                
-                for card in deck! {
-                    if(index % 2 == 0) {
-                        card.position = CGPointMake(x, y - (counterP * (yPadding + cardHeight)))
-                        counterP += 1
-                    } else {
-                        card.position = CGPointMake(x + cardWidth + xPadding, y - (counterO * (yPadding + cardHeight)))
-                        counterO += 1
-                    }
-                    index += 1
-                }
-                
-                menuButton.position = CGPointMake(self.size.width / 2, (menuButton.texture!.size().height) * 3.5);
-            }
-            
-            if (deck?.count == 12) {
-                let cardWidth:CGFloat = 70
-                let cardHeight:CGFloat = 90
-                
-                xPadding = cardWidth * 0.50
-                yPadding = cardWidth * 0.30
-                
-                let totalGameSpaceWidth =  (3 * cardWidth) +  (xPadding * 2)
-                let totalGameSpaceHeight = (4 * cardHeight) + (yPadding * 3)
-                
-                x = (self.size.width  / 2) - (totalGameSpaceWidth  / 2) + (cardWidth / 2)
-                y = (self.size.height / 2) + (totalGameSpaceHeight / 2) - (cardHeight * 0.3)
-                
-                var xCount:CGFloat = 0
-                var yCount:CGFloat = 0
-                var index  = 0
-                
-                for card in deck! {
-                    if(index != 3){
-                        card.position = CGPointMake(x + ((xPadding + cardWidth) * xCount), y)
-                    } else {
-                        index = 0
-                        xCount = 0
-                        yCount += 1
-                        y -= (yPadding + cardHeight)
-                        card.position = CGPointMake(x + ((xPadding + cardWidth) * xCount), y)
-                    }
-                    //print("\(card.id)+: \(card.position)")
-                    
-                    index += 1
-                    xCount += 1
-                }
-                
-                menuButton.position = CGPointMake(self.size.width / 2, (menuButton.texture!.size().height) * 3.5);
-            }
-            
-            if (deck?.count == 20) {
-                let cardWidth:CGFloat = 57
-                let cardHeight:CGFloat = 80
-                
-                xPadding = cardWidth * (modelName == "iPhone 6s Plus"/*"Simulator"*/ ? 0.50 : 0.20)
-                yPadding = cardWidth * (modelName == "iPhone 6s Plus"/*"Simulator"*/ ? 0.70 : 0.15)
-                
-                let totalGameSpaceWidth =  (3 * cardWidth) +  (xPadding * 2)
-                let totalGameSpaceHeight = (4 * cardHeight) + (yPadding * 3)
-                
-                x = (self.size.width  / 2) -
-                    (totalGameSpaceWidth  * (modelName == "iPhone 6s Plus"/*"Simulator"*/ ? 0.55 : 0.50))
-                
-                y = (self.size.height / 2) +
-                    (totalGameSpaceHeight * (modelName == "iPhone 6s Plus"/*"Simulator"*/ ? 0.60 : 0.55))
-                
-                var xCount:CGFloat = 0
-                var yCount:CGFloat = 0
-                var index  = 0
-                
-                for card in deck! {
-                    if(index != 4){
-                        card.position = CGPointMake(x + ((xPadding + cardWidth) * xCount), y)
-                    } else {
-                        index = 0
-                        xCount = 0
-                        yCount += 1
-                        y -= (yPadding + cardHeight)
-                        card.position = CGPointMake(x + ((xPadding + cardWidth) * xCount), y)
-                    }
-                    //print("\(card.id)+: \(card.position)")
-                    
-                    index += 1
-                    xCount += 1
-                }
-                
-                menuButton.position = CGPointMake(self.size.width / 2, (menuButton.texture!.size().height) * 3.5);
-            }
-            
+        } else {
+            // No background music for earlier versions
         }
         
         
+        deck = CardGameEngine.INSTANCE.getShuffledDeckForGame()
+        
+        if(deck?.count == DeckSizeEnum.SMALL.rawValue) {
+            
+            setCardsPosition(DeckSizeEnum.SMALL,
+                             cardWidth: deck![0].frontTexture.size().width,
+                             cardHeight: deck![0].frontTexture.size().height)
+        } else if (deck?.count == DeckSizeEnum.MEDIUM.rawValue) {
+            
+            setCardsPosition(DeckSizeEnum.MEDIUM,
+                             cardWidth: deck![0].frontTexture.size().width,
+                             cardHeight: deck![0].frontTexture.size().height)
+        } else { //don't check the deck size since we now it is the biggest
+                 //and it could have 16 cards for iPhone 4 or 20 for all others
+            
+            setCardsPosition(DeckSizeEnum.LARGE,
+                             cardWidth: deck![0].frontTexture.size().width,
+                             cardHeight: deck![0].frontTexture.size().height)
+        }
+        
+        menuButton.position = CGPointMake(self.size.width / 2, (menuButton.texture!.size().height) * 3.5);
         
         NSNotificationCenter.defaultCenter().addObserver(
             self, selector: #selector(self.playWrongPairSound(_:)), name: Constants.CARD_PAIR_DIFFERENT, object: CardGameEngine.INSTANCE)
@@ -258,13 +69,77 @@ class GameScene: SKScene, GameNotificationProtocol {
             self, selector: #selector(self.playGameWinSound(_:)), name: Constants.GAME_END, object: CardGameEngine.INSTANCE)
     }
     
+    private func setCardsPosition(deckSize:DeckSizeEnum, cardWidth:CGFloat, cardHeight:CGFloat) {
+        let _cardWidth:CGFloat = cardWidth
+        let _cardHeight:CGFloat = cardHeight
+        
+        var xPadding = _cardWidth * 0.50
+        var yPadding = _cardWidth * (deckSize == DeckSizeEnum.SMALL ? 0.1 : 0.20)
+        if(deckSize == DeckSizeEnum.LARGE) {
+            xPadding = _cardWidth * (modelName == "iPhone 6s Plus" ? 0.50 : 0.20)
+            yPadding = _cardWidth * (modelName == "iPhone 6s Plus" ? 0.70 : 0.15)
+        }
+        
+        var totalGameSpaceWidth:CGFloat
+        var totalGameSpaceHeight:CGFloat
+        if(deckSize == DeckSizeEnum.SMALL) {
+            
+            totalGameSpaceWidth =  (2 * cardWidth) + xPadding
+            totalGameSpaceHeight = (3 * cardHeight) + (yPadding * 2)
+            
+        } else if(deckSize == DeckSizeEnum.MEDIUM) {
+            
+            totalGameSpaceWidth =  (3 * _cardWidth) +  (xPadding * 2)
+            totalGameSpaceHeight = (4 * _cardHeight) + (yPadding * 3)
+            
+        } else {
+            totalGameSpaceWidth =  (4 * _cardWidth) +  (xPadding * 3)
+            
+            if(modelName == "iPhone 4s") {
+                totalGameSpaceHeight = (4 * _cardHeight) + (yPadding * 3)
+            } else {
+            
+                totalGameSpaceHeight = (5 * _cardHeight) + (yPadding * 4)
+            }
+        }
+        
+        let x = (self.size.width  / 2) - (totalGameSpaceWidth  / 2) + (_cardWidth / 2)
+        var y = (self.size.height / 2) + (totalGameSpaceHeight / 2) - (_cardHeight * 0.3)
+        
+        var xCount:CGFloat = 0
+        var yCount:CGFloat = 0
+        var index  = 0
+        let cardsInRow = (deckSize == DeckSizeEnum.LARGE ? 4 : (deckSize == DeckSizeEnum.MEDIUM ? 3 : 2))
+        
+        var aux:Int = 0;
+        for card in deck! {
+            aux += 1
+            if(index != cardsInRow){
+                card.position = CGPointMake(x + ((xPadding + _cardWidth) * xCount), y)
+            } else {
+                index = 0
+                xCount = 0
+                yCount += 1
+                y -= (yPadding + _cardHeight)
+                card.position = CGPointMake(x + ((xPadding + _cardWidth) * xCount), y)
+            }
+            //print("\(card.id)+: \(card.position)")
+            
+            index += 1
+            xCount += 1
+        }
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        addBackgroundMusic()
+        
+        if #available(iOS 9, *) {
+            addBackgroundMusic()
+        }
         
         backgroundColor = (UIColor.whiteColor())
         
@@ -294,17 +169,18 @@ class GameScene: SKScene, GameNotificationProtocol {
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
     
+    @available(iOS 9, *)
     private func addBackgroundMusic() {
         //We wait half a second before playing the background music to avoid
         //music overlap and buggy behaviour
         
         runAction(SKAction.waitForDuration(0.5), completion: {
             if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.EASY) {
-                self.addChild(self.backgroundMusicEasy)
+                self.addChild(self.backgroundMusicEasy as! SKAudioNode)
             } else if (CardGameEngine.INSTANCE.difficulty == DifficultyEnum.MEDIUM) {
-                self.addChild(self.backgroundMusicMedium)
+                self.addChild(self.backgroundMusicMedium as! SKAudioNode)
             } else {
-                self.addChild(self.backgroundMusicHard)
+                self.addChild(self.backgroundMusicHard as! SKAudioNode)
             }
         })
     }
