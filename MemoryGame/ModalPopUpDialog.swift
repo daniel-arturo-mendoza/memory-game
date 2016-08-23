@@ -15,7 +15,7 @@ class ModalPopUpDialog: ModalViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white: 1, alpha: 0.5)//UIColor.clearColor()
+        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
         view.opaque = false
         
         let x:CGFloat =  view.center.x

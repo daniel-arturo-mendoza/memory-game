@@ -45,21 +45,17 @@ class Card: SKSpriteNode, GameNotificationProtocol {
             let wiggleIn = SKAction.scaleXTo(1.0, duration: 0.05)
             let wiggleOut = SKAction.scaleXTo(1.1, duration: 0.05)
             let wiggle = SKAction.sequence([wiggleIn, wiggleOut])
-            //let wiggleRepeat = SKAction.repeatActionForever(wiggle)
             
-            // again, since this is the touched sprite
-            // run the action on self (implied)
+            //uncomment if we want a permanent wiggle effect
+            //let wiggleRepeat = SKAction.repeatActionForever(wiggle)
             //runAction(wiggleRepeat, withKey: "wiggle")
+            
             runAction(wiggle, withKey: "wiggle")
         }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        /*for touch in touches {
-            let location = touch.locationInNode(scene!) // make sure this is scene, not self
-            let touchedNode = nodeAtPoint(location)
-            touchedNode.position = location
-        }*/
+        //Do nothing
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -118,19 +114,5 @@ class Card: SKSpriteNode, GameNotificationProtocol {
     func postNotificationName (notificationName:String) {
         NSNotificationCenter.defaultCenter().postNotificationName(notificationName, object: self)
     }
-    
-    /*override func isEqual(object: AnyObject?) -> Bool {
-        if let object = object as? Card {
-            return hashValue == object.hashValue
-        } else {
-            return false
-        }
-    }
-    
-    override var hashValue: Int {
-        get {
-            return "\(self.frontTexture),\(self.backTexture),\(self.isCopy)".hashValue
-        }
-    }*/
     
 }

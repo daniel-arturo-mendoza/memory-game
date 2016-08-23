@@ -12,7 +12,7 @@ import SpriteKit
 class GameMenuScene: SKScene, GameNotificationProtocol {
     
     let modelName = UIDevice.currentDevice().modelName
-    let backgroundMusic = SKAudioNode(fileNamed: "menu_bck_music.aac")
+    var backgroundMusic: AnyObject = ""
     let bgImage = SKSpriteNode(imageNamed: "main_title_300x108")
     
     var easyBtn:DifficultyButton?
@@ -23,6 +23,10 @@ class GameMenuScene: SKScene, GameNotificationProtocol {
     
     override init(size: CGSize) {
         super.init(size: size)
+        
+        if #available(iOS 9.0, *) {
+            backgroundMusic = SKAudioNode(fileNamed: "menu_bck_music.aac")
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +44,10 @@ class GameMenuScene: SKScene, GameNotificationProtocol {
         addTitle()
         addButtons()
         addListeners()
-        addBackgroundMusic()
+        
+        if #available(iOS 9, *) {
+            addBackgroundMusic()
+        }
     }
     
     private func addTitle() {
@@ -48,12 +55,13 @@ class GameMenuScene: SKScene, GameNotificationProtocol {
         self.addChild(bgImage)
     }
     
+    @available(iOS 9, *)
     private func addBackgroundMusic() {
         //We wait one second before playing the background music to avoid
         //music overlap and buggy behaviour
         
         runAction(SKAction.waitForDuration(0.5), completion: {
-            self.addChild(self.backgroundMusic)
+            self.addChild(self.backgroundMusic as! SKAudioNode)
         })
     }
     
@@ -66,17 +74,6 @@ class GameMenuScene: SKScene, GameNotificationProtocol {
         
         hardBtn = DifficultyButton(image: "hard.png", setDifficultyAction: Constants.START_GAME_HARD)
         hardBtn!.position = CGPointMake(self.size.width/2 , (self.size.height/2)-120)
-        
-        /*if(modelName == "iPhone 5s" || modelName == "Simulator") {
-            
-            let xPad:CGFloat = 120
-            let yPad:CGFloat = 160
-            
-            var index = 0
-            var countP:CGFloat = 0
-            var countO:CGFloat = 0
-            
-        }*/
         
         addChild(easyBtn!)
         addChild(medBtn!)

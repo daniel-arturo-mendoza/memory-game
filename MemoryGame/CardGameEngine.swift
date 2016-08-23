@@ -16,7 +16,6 @@ class CardGameEngine: GameNotificationProtocol {
     
     let modelName = UIDevice.currentDevice().modelName
     
-    var numOfCards = 30
     var numOfPairs:Int = 3 //Default value
     
     var cardSize = ""
@@ -30,7 +29,6 @@ class CardGameEngine: GameNotificationProtocol {
     
     init() {
         
-        //initDeck()
     }
     
     deinit {
@@ -44,22 +42,24 @@ class CardGameEngine: GameNotificationProtocol {
         initDeck()
     }
     
-    /* Initializes the primary deck with ALL available cards in the game */
+    /* Initializes the primary deck with ALL available cards in the game 
+     * Uncomment the 'Simulator' string to test the game in emulated devices.
+     */
     private func initDeck() {
         self.deckAllCards.removeAll()
         
         
-        if(modelName == "iPhone 4s") {
+        if(modelName == "iPhone 4s"/*"Simulator"*/) {
             cardSize = Constants.SMALL_CARDS_5S
             
-        } else if (/*
+        } else if (
              modelName == "iPhone 5"  ||
              modelName == "iPhone 5s" ||
              modelName == "iPhone 6"  ||
              modelName == "iPhone 6 Plus" ||
              modelName == "iPhone 6s"     ||
-             modelName == "iPhone 6s Plus"*/
-            modelName == "Simulator") {
+             modelName == "iPhone 6s Plus"
+            /*modelName == "Simulator"*/) {
             
             if (difficulty == DifficultyEnum.EASY) {
                 cardSize = Constants.BIG_CARDS_5S
@@ -74,7 +74,7 @@ class CardGameEngine: GameNotificationProtocol {
             cardSize = Constants.BIG_CARDS_5S
         }
         
-        
+        //Initialize all the cards from the available emergency pictures
         
         for var i in (1...30) {
             card = Card(imageNamedFront: "c\(i)_\(cardSize)", imageNamedBack: "c0_\(cardSize)")
@@ -82,9 +82,6 @@ class CardGameEngine: GameNotificationProtocol {
             card?.id = (card?.hashValue.description)!
             
             card?.name = "c\(i)_\(cardSize)"
-            
-            //card?.name = "c\(i)_\(cardSize)"
-            //print(card?.name)
             
             self.deckAllCards.append(card!)
             i += 1
@@ -128,7 +125,7 @@ class CardGameEngine: GameNotificationProtocol {
         } else if (self.difficulty == DifficultyEnum.MEDIUM) {
             numOfPairs = 6
         } else {
-            if(modelName == "iPhone 4s") {
+            if(modelName == "iPhone 4s"/*"Simulator"*/) {
                 numOfPairs = 8 // the iPhone 4s screen is smaller, so it can fit only 8 pairs
             } else {
                 numOfPairs = 10
@@ -223,7 +220,7 @@ class CardGameEngine: GameNotificationProtocol {
                 card2?.frontTexture.description)
         }
     }
-    
+
     @objc func actOnReveal(notification: NSNotification) {
         print("<CardGameEngine> Card revealed")
         if(areRevealedCardsEqual()){

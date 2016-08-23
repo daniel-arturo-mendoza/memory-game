@@ -38,8 +38,7 @@ class Button: SKSpriteNode, GameNotificationProtocol {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for _ in touches {
-            // note: removed references to touchedNode
-            // 'self' in most cases is not required in Swift
+            
             zPosition = 15
             let bounce = SKAction.scaleTo(1.1, duration: 0.05)
             runAction(bounce, withKey: "bounce")
@@ -47,11 +46,7 @@ class Button: SKSpriteNode, GameNotificationProtocol {
             let wiggleIn = SKAction.scaleXTo(1.0, duration: 0.05)
             let wiggleOut = SKAction.scaleXTo(1.1, duration: 0.05)
             let wiggle = SKAction.sequence([wiggleIn, wiggleOut])
-            //let wiggleRepeat = SKAction.repeatActionForever(wiggle)
             
-            // again, since this is the touched sprite
-            // run the action on self (implied)
-            //runAction(wiggleRepeat, withKey: "wiggle")
             runAction(wiggle, withKey: "wiggle")
         }
         
@@ -59,11 +54,7 @@ class Button: SKSpriteNode, GameNotificationProtocol {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        /*for touch in touches {
-         let location = touch.locationInNode(scene!) // make sure this is scene, not self
-         let touchedNode = nodeAtPoint(location)
-         touchedNode.position = location
-         }*/
+        //Do nothing
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -86,16 +77,5 @@ class Button: SKSpriteNode, GameNotificationProtocol {
     func setActionName (action: String) {
         self.action = action
     }
-    
-    override func isEqual(object: AnyObject?) -> Bool {
-        if let object = object as? Card {
-            return id == object.id
-        } else {
-            return false
-        }
-    }
-    
-    override var hash: Int {
-        return id.hashValue
-    }
+
 }

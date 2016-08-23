@@ -12,15 +12,15 @@ import UIKit
 public extension UIDevice {
     
     var modelName: String {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let machineMirror = Mirror(reflecting: systemInfo.machine)
-        let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
-            return identifier + String(UnicodeScalar(UInt8(value)))
+        var iOSDevInfo = utsname()
+        uname(&iOSDevInfo)
+        let mirror = Mirror(reflecting: iOSDevInfo.machine)
+        let hwId = mirror.children.reduce("") { hwId, item in
+            guard let value = item.value as? Int8 where value != 0 else { return hwId }
+            return hwId + String(UnicodeScalar(UInt8(value)))
         }
         
-        switch identifier {
+        switch hwId {
         case "iPod5,1":                                 return "iPod Touch 5"
         case "iPod7,1":                                 return "iPod Touch 6"
         case "iPhone3,1", "iPhone3,2", "iPhone3,3":     return "iPhone 4"
@@ -45,7 +45,7 @@ public extension UIDevice {
         case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return "iPad Pro"
         case "AppleTV5,3":                              return "Apple TV"
         case "i386", "x86_64":                          return "Simulator"
-        default:                                        return identifier
+        default:                                        return hwId
         }
     }
     

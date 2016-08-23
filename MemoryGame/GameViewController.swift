@@ -11,8 +11,6 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
-    static let INSTANCE = GameViewController()
-    
     var menuScene: GameMenuScene?
     var gameScene: GameScene?
     
